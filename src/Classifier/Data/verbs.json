@@ -1,0 +1,15 @@
+{
+"recommend":
+	["recommend","advocate","advise","confirm",
+    "endorse","praise","prescribe","propose",
+    "suggest","commend","compliment","commend",
+    "give","get","point out","instruct","direct",
+    "encourage","favor","thumbs up"],
+"want":
+	["need", "hunger","ambitio","fancy","lust",
+    "yearn","thirst","take","miss","envy","seek",
+    "long","care","hope","starve","go for","itch",
+    "wish","hanker","lust after","spoil","begrudge",
+    "lech after","feel like","desire","like",
+    "wish","crave"]
+}

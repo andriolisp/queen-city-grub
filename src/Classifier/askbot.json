@@ -1,0 +1,13 @@
+{
+    
+  "1": 
+    {       "question": "I want to eat some food",
+            "recommend": false,
+            "confidence": null
+    }, 
+  "2": { 
+        "question": "",
+        "recommend": true,
+        "confidence": null
+    }
+}
