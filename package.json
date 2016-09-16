@@ -1,0 +1,22 @@
+{
+  "name": "queen-city-grub",
+  "version": "0.1.0",
+  "description": "Finding the best grub in Charlotte",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvhackathon2016/queen-city-grub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvhackathon2016/queen-city-grub/issues"
+  },
+  "homepage": "https://github.com/rvhackathon2016/queen-city-grub#readme"
+}
