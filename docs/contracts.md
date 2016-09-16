@@ -98,6 +98,12 @@ var locationRequest = {...};
 ...
 
 var locationPromise = LocationService.find(locationRequest)
+
+...
+
+locationPromise.then(function (location) {
+  ...
+})
 ```
 
 ## Restaurants Search
@@ -130,13 +136,19 @@ This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) a
 ### Usage
 
 ```
-var RestaurantsService = require('./RestaurantsService');
+var RestaurantsService = require('./RestaurantsService')
 
 ...
 
-var restaurantsRequest = {...};
+var restaurantsRequest = {...}
 
 ...
 
-var restaurantsPromise = RestaurantsService.find(restaurantsRequest);
+var restaurantsPromise = RestaurantsService.find(restaurantsRequest)
+
+...
+
+restaurantsPromise.then(function (restaurants) {
+  ...
+})
 ```
