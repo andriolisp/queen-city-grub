@@ -24,7 +24,7 @@ This piece will take a sentance and return a list of named tags.
 		"neighborhood": ['south end'],
 		"address": [...],
 		"foodType": [...],
-		"resteraunt" [...]
+		"restauraunt" [...]
 	}
 }
 ```
@@ -32,5 +32,26 @@ This piece will take a sentance and return a list of named tags.
 
 ## Messenger
 
+## Google Maps Search
+
+This piece will take a neighborhood or address and return a latitude and longitude
+
+### Request
+```
+{
+	"neighborhood" : ['south end']
+	"address" : [...]
+}
+```
+
+### Response
+```
+{
+	"location" : "lat,lon"
+}
+```
+
 ## Goolge Places Search
+
+This piece will take a set of resaurant search criteria and return up to three restaurant suggestions
 
