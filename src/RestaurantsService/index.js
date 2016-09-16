@@ -3,11 +3,81 @@ var _ = require('lodash');
 
 var RestaurantsService = {};
 
+var sortRestaurants = function (restaurant1, restaurant2) {
+
+  var rating1 = restaurant1.rating;
+  var rating2 = restaurant2.rating;
+
+  if (rating1 < rating2) {
+    return 1;
+  } else if (rating1 == rating2) {
+    return 0;
+  } else if (rating1 > rating2) {
+    return -1;
+  }
+
+};
+
+function getPlaces(api, searchCriteria, reject) {
+  
+  return new Promise(function (resolve) {
+
+    api.search(searchCriteria, function(err, res) {
+
+      if (err) {
+        reject(err);
+      } else if (res.status != "OK") {
+        reject(res.status);
+      } else {
+        resolve(res)
+      }
+
+    });
+
+  });
+
+};
+
+function getDetails(api, placeId){
+  
+  return new Promise(function (resolve) {
+
+    api.details({placeid: placeId}, function (err, res) {
+
+      if (err) {
+        
+        resolve(null);
+        return;
+
+      } else if (res.status != "OK") {
+        
+        resolve(null);
+        return;
+
+      } else {
+        
+        resolve({
+          "name" : res.result.name,
+          "rating" : res.result.rating,
+          "website" : res.result.website,
+          "googleUrl" : res.result.url
+        });
+
+      }
+
+    });
+
+  });
+
+};
+
 /**
  * Return a set of restraunts
  */
 RestaurantsService.find = function (searchRequest) {
 
+  return new Promise(function (resolve, reject) {
+    
     // Create a new instance of the Google Places API
     var api = new GooglePlacesAPI('AIzaSyDJxv_zb4nnlWEaOeVXZC5iXUQRKSKN5uI');
 
@@ -21,117 +91,37 @@ RestaurantsService.find = function (searchRequest) {
       "maxprice" : searchRequest.pricing
     };
 
-    // Build an object of restaurant data
-    var restrauntPromises = [];
+    // Get the places given search criteria
+    getPlaces(api, searchCriteria, reject).then(function (res){
 
-    new Promise(function (outerResolve){
+      // Build an array of details promises
+      var detailsPromises = [];
 
-      // Search for restaurants
-      api.search(searchCriteria, function(err, res) {
+      // Go through each place
+      res.results.forEach(function (place) {
         
-        if (err) {
-
-          // Log the error, we can't do anything now
-          console.log("Google Places Search Error", err);
-          return;
-
-        }
-
-        if (res.status != "OK") {
-          
-            // Log the status if it's not OK
-            console.log("Google Places Search Status", res.status);
-            return;
-
-        }
-
-        // Get the array of results
-        var searchResults = res.results;
-
-        if (searchResults.length == 0) {
-
-          // There's nothing to do now..?
-          console.log("There are no Google Places results!");
-          return;
-
-        }
-
-        // Go through each result
-        for (var i = 0; i < searchResults.length; i++) {
-
-          var restaurantPromise = new Promise(function (innerResolve) {
-
-            // Fetch the details about this place
-            api.details({placeid: searchResults[i].place_id}, function (err, res) {
-
-              if (err) {
-
-                // Log the error, skip this place?
-                console.log("Google Places Details Error", err);
-                innerResolve(null);
-                return;
-
-              }
-
-              if (res.status != "OK") {
-                
-                // Log the status if it's not OK
-                console.log("Google Places Details Status", res.status);
-                innerResolve(null);
-                return;
-
-              }
-
-              // Add the details to the result
-              var detailsResult = res.result;
-
-              // Resolve the restaurant information
-              innerResolve({
-                "name" : detailsResult.name,
-                "rating" : detailsResult.rating,
-                "website" : detailsResult.website,
-                "googleUrl" : detailsResult.url
-              });
-
-            });
-
-          });
-
-          // Store the restaurant promise
-          restrauntPromises.push(restaurantPromise);
-
-        }
+        // Create an array of promises to get restaurant details
+        detailsPromises.push(getDetails(api, place.place_id));
 
       });
 
-    }).then(function (restaurants){
+      // Wait for all place details to be fetched
+      Promise.all(detailsPromises).then(function (restaurants) {
 
-      // Sort the restaurants by rating
-      restraunts.sort(function (restaurant1, restaurant2) {
+        // Filter out the null values
+        var actualRestaurants = _.filter(restaurants, _.isObject);
 
-        var rating1 = restaurant1.rating;
-        var rating2 = restaurant2.rating;
+        // Sort the restaurants
+        actualRestaurants.sort(sortRestaurants);
 
-        if (rating1 < rating2) {
-          
-          return -1;
-
-        } else if (rating1 == rating2) {
-          
-          return 0;
-
-        } else if (rating1 > rating2) {
-          
-          return 1;
-
-        }
+        // Resolve the top three results
+        resolve(actualRestaurants.slice(0, 3));
 
       });
-
-      // Resolve the top three results
-      resolve(restraunts.slice(0, 3));
 
     });
+
+  });
 
 };
 
