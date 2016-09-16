@@ -1,28 +1,7 @@
 var GooglePlacesAPI = require('google-places');
 var _ = require('lodash');
 
-var Finder = {};
-
-var locationRequest = {
-  "neighborhood" : [""],
-  "address" : [""]
-};
-
-/**
- * Return a latitude and longitude
- */
-Finder.findLocation = function (locationRequest) {
-
-
-
-};
-
-var searchRequest = {
-  "foodType" : "pizza",
-  "location" : "lat,lon",
-  "maxprice" : 4,
-  "rating" : 4
-};
+var Places = {};
 
 var sortRestaurants = function (restaurant1, restaurant2) {
 
@@ -33,7 +12,7 @@ var sortRestaurants = function (restaurant1, restaurant2) {
 /**
  * Return a set of restraunts
  */
-Finder.findRestaurants = function (searchRequest) {
+Places.findRestaurants = function (searchRequest) {
 
   // Create a new instance of the Google Places API
   var api = new GooglePlacesAPI('AIzaSyDJxv_zb4nnlWEaOeVXZC5iXUQRKSKN5uI');
@@ -118,4 +97,4 @@ Finder.findRestaurants = function (searchRequest) {
 
 };
 
-export default Finder;
+module.exposts = Places;
