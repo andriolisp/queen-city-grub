@@ -83,7 +83,7 @@ If an error occurs, or it is not possible to determine the coordinates, `null` w
 
 ### Response
 ```
-["lat","lon"]
+["lat","lng"]
 ```
 
 ### Usage
@@ -107,7 +107,7 @@ This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) a
 ### Request
 ```
 {
-	"location" : "lat,lon",
+  "location" : ["lat","lng"],
 	"foodType" : "pizza",
 	"pricing" : 2
 }
