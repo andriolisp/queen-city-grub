@@ -1,6 +1,6 @@
 var EntitiesService = {}
 
-EntitiesService.prototype.tag = function (message) {
+EntitiesService.tag = function (message) {
   var model = {
     message: message,
     entities: {
@@ -11,10 +11,15 @@ EntitiesService.prototype.tag = function (message) {
     }
   }
 
-  var P = new Promise()
-  P.resolve(model)
+  var P = new Promise(function (resolve, reject) {
+    resolve(model)
+  })
 
   return P
 }
 
 module.exports = EntitiesService
+
+EntitiesService.tag('hello').then(function (model) {
+  console.log(model)
+})
