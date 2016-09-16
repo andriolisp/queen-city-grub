@@ -70,7 +70,7 @@ This piece will take a sentance and return a list of named tags.
 
 ## Location Search
 
-This piece will take an address or neighborhood and return the corresponding latitude and longitude coordinates in string format.
+This piece will take an address or neighborhood and return a promise that returns the corresponding latitude and longitude coordinates in string format.
 If an error occurs, or it is not possible to determine the coordinates, `null` will be returned
 
 ### Request
@@ -89,7 +89,7 @@ If an error occurs, or it is not possible to determine the coordinates, `null` w
 ### Usage
 
 ```
-var LocationSearch = require('./LocationSearch');
+var LocationService = require('./LocationService');
 
 ...
 
@@ -97,7 +97,7 @@ var locationRequest = {...};
 
 ...
 
-LocationSearch.find(locationRequest)
+var locationPromise = LocationService.find(locationRequest)
 ```
 
 ## Restaurants Search
@@ -130,7 +130,7 @@ This piece will take a location, food type and pricing range (0,1,2,3 or 4) and 
 ### Usage
 
 ```
-var RestaurantsSearch = require('./RestaurantsSearch');
+var RestaurantsService = require('./RestaurantsService');
 
 ...
 
@@ -138,5 +138,5 @@ var restaurantsRequest = {...};
 
 ...
 
-RestaurantsSearch.find(restaurantsRequest);
+var restaurantsPromise = RestaurantsService.find(restaurantsRequest);
 ```
