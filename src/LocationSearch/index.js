@@ -9,21 +9,22 @@ GeoCoder.find = function (locationRequest) {
 
     // Create a new instance of the Google GeoCoder API
     var api = GoogleGeoCoderAPI({
-        "key" : "AIzaSyCBrJsgcagD8FeGh1Pe-NLW56fdItkVAA4"
+        "key" : "AIzaSyCBrJsgcagD8FeGh1Pe-NLW56fdItkVAA4",
+        "region" : "us"
     });
 
     // Build the location string that we want to search for
-    var locationString = "";
+    var addressString = "";
 
     if (locationRequest.address != null) {
 
         // Prefer an address if it is given
-        locationString = locationRequest.address;
+        addressString = locationRequest.address;
 
     } else if (locationRequest.neighborhood != null) {
 
         // Use a neighborhood if no address is available
-        locationString = location.neighborhood;
+        addressString = location.neighborhood;
 
     } else {
 
@@ -32,9 +33,14 @@ GeoCoder.find = function (locationRequest) {
 
     }
 
+    // If any errors occur, return null
     var location = null;
 
-    api.find(locationString, function (err, res) {
+    // Look for the address string, with Charlotte NC appended
+    api.find(addressString + ", Charlotte NC", function (err, res) {
+
+        // Log the GeoCoder response
+        console.log("Google GeoCoder Response", res);
 
         if (err) {
 
@@ -44,7 +50,16 @@ GeoCoder.find = function (locationRequest) {
 
         }
 
+        if (res.status != "OK") {
+         
+            // Log the status if it's not OK
+            console.log("Google GeoCoder Status", res.status);
+            return;
 
+        }
+
+        // Use the location of the first result
+        location = res.results[0].geometry.location;
 
     });
 

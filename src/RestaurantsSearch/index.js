@@ -30,11 +30,22 @@ Places.findRestaurants = function (searchRequest) {
   // Search for restaurants
   api.search(searchCriteria, function(err, res) {
 
+    // Log the Search response
+    console.log("Google Places Search Response", res);
+
     if (err) {
 
       // Log the error, we can't do anything now
       console.log("Google Places Search Error", err);
       return;
+
+    }
+
+    if (res.status != "OK") {
+      
+        // Log the status if it's not OK
+        console.log("Google Places Search Status", res.status);
+        return;
 
     }
 
@@ -58,11 +69,22 @@ Places.findRestaurants = function (searchRequest) {
       // Fetch the details about this place
       api.details({reference: searchResult.reference}, function (err, res) {
 
+        // Log the Details response
+        console.log("Google Places Details Response", res);
+
         if (err) {
 
           // Log the error, skip this place?
           console.log("Google Places Details Error", err);
           return;
+
+        }
+
+        if (res.status != "OK") {
+          
+            // Log the status if it's not OK
+            console.log("Google Places Details Status", res.status);
+            return;
 
         }
 
