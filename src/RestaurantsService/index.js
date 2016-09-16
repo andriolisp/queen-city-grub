@@ -59,8 +59,8 @@ function getDetails(api, placeId){
         resolve({
           "name" : res.result.name,
           "rating" : res.result.rating,
-          "website" : res.result.website,
-          "googleUrl" : res.result.url
+          "website" : res.result.website || null,
+          "googleUrl" : res.result.url || null
         });
 
       }

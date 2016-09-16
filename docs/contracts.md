@@ -4,9 +4,12 @@
 This piece will take a sentence and return json object with basic information 
 about what they want. 
 
-cheap == true when they specifiy that they want some stuff
-specific == true when they specified what food they want
+message == the actual message
+cheap == true when they specifiy that they want some want cheap places
+highrated == true if they want high rated places
+recommend == true if they'd like to be recommended a place instead
 food == will have a specific food type they might have asked for
+location == location if a location was found in the message 
 
 ## Request
 ```
@@ -19,8 +22,10 @@ food == will have a specific food type they might have asked for
 {
 	"message": "I'm looking for mexican food in south end",
 	"cheap": false,
-    "specific": true,
-    "food": "mexican food",
+  "highrated": true
+  "recommend": false,
+  "food": "mexican food",
+  "location": "south end"
 }
 
 ## Request
@@ -34,8 +39,10 @@ food == will have a specific food type they might have asked for
 {
 	"message": "Would you recommend a place to eat",
 	"cheap": false,
-    "specific": false,
-    "food": null,
+  "specific": false,
+  "recommend": true,
+  "food": null
+  "location": null,
 }
 
 ## Entity Tagger
@@ -83,7 +90,7 @@ If an error occurs, or it is not possible to determine the coordinates, `null` w
 
 ### Response
 ```
-["lat","lon"]
+["lat","lng"]
 ```
 
 ### Usage
@@ -98,6 +105,12 @@ var locationRequest = {...};
 ...
 
 var locationPromise = LocationService.find(locationRequest)
+
+...
+
+locationPromise.then(function (location) {
+  ...
+})
 ```
 
 ## Restaurants Search
@@ -107,7 +120,7 @@ This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) a
 ### Request
 ```
 {
-	"location" : "lat,lon",
+  "location" : ["lat","lng"],
 	"foodType" : "pizza",
 	"pricing" : 2
 }
@@ -130,13 +143,19 @@ This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) a
 ### Usage
 
 ```
-var RestaurantsService = require('./RestaurantsService');
+var RestaurantsService = require('./RestaurantsService')
 
 ...
 
-var restaurantsRequest = {...};
+var restaurantsRequest = {...}
 
 ...
 
-var restaurantsPromise = RestaurantsService.find(restaurantsRequest);
+var restaurantsPromise = RestaurantsService.find(restaurantsRequest)
+
+...
+
+restaurantsPromise.then(function (restaurants) {
+  ...
+})
 ```
