@@ -13,7 +13,7 @@ GeoCoder.find = function (locationRequest) {
         var api = new GoogleGeoCoderAPI("AIzaSyCBrJsgcagD8FeGh1Pe-NLW56fdItkVAA4");
 
         // An array of components to match on
-        var components = ["country:US","administrative_area:NC"];
+        var components = ["country:US","administrative_area:NC","locality:Charlotte"];
 
         // An address to match on
         var address = null;
