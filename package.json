@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/rvhackathon2016/queen-city-grub/issues"
   },
-  "homepage": "https://github.com/rvhackathon2016/queen-city-grub#readme"
+  "homepage": "https://github.com/rvhackathon2016/queen-city-grub#readme",
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0"
+  }
 }
