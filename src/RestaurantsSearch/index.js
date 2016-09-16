@@ -3,12 +3,6 @@ var _ = require('lodash');
 
 var Places = {};
 
-var sortRestaurants = function (restaurant1, restaurant2) {
-
-
-
-};
-
 /**
  * Return a set of restraunts
  */
@@ -19,7 +13,7 @@ Places.findRestaurants = function (searchRequest) {
 
   // Build the search criteria for Google Places API
   var searchCriteria = {
-    "radius" : 5, // Look within 10 mile radius of location?
+    "radius" : 10, // Look within 10 mile radius of location?
     "type" : "restaurant", // We only want restaurants
     "keyword" : searchRequest.foodType,
     "location" : searchRequest.location,
@@ -36,11 +30,22 @@ Places.findRestaurants = function (searchRequest) {
   // Search for restaurants
   api.search(searchCriteria, function(err, res) {
 
+    // Log the Search response
+    console.log("Google Places Search Response", res);
+
     if (err) {
 
       // Log the error, we can't do anything now
       console.log("Google Places Search Error", err);
       return;
+
+    }
+
+    if (res.status != "OK") {
+      
+        // Log the status if it's not OK
+        console.log("Google Places Search Status", res.status);
+        return;
 
     }
 
@@ -64,11 +69,22 @@ Places.findRestaurants = function (searchRequest) {
       // Fetch the details about this place
       api.details({reference: searchResult.reference}, function (err, res) {
 
+        // Log the Details response
+        console.log("Google Places Details Response", res);
+
         if (err) {
 
           // Log the error, skip this place?
           console.log("Google Places Details Error", err);
           return;
+
+        }
+
+        if (res.status != "OK") {
+          
+            // Log the status if it's not OK
+            console.log("Google Places Details Status", res.status);
+            return;
 
         }
 
@@ -89,12 +105,31 @@ Places.findRestaurants = function (searchRequest) {
 
   });
 
-  // Sort the restaurants 
-  restraunts.sort(sortRestaurants);
+  // Sort the restaurants by rating
+  restraunts.sort(function (restaurant1, restaurant2) {
+
+    var rating1 = restaurant1.rating;
+    var rating2 = restaurant2.rating;
+
+    if (rating1 < rating2) {
+      
+      return -1;
+
+    } else if (rating1 == rating2) {
+      
+      return 0;
+
+    } else if (rating1 > rating2) {
+      
+      return 1;
+
+    }
+
+  });
 
   // Return the top three results
   return restraunts.slice(0, 3);
 
 };
 
-module.exposts = Places;
+module.exports = Places;

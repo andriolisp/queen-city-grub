@@ -68,35 +68,48 @@ This piece will take a sentance and return a list of named tags.
 
 ## Messenger
 
-## Google Maps Search
+## Location Search
 
-This piece will take a neighborhood or address and return a latitude and longitude
+This piece will take an address or neighborhood and return the corresponding latitude and longitude coordinates in string format.
+If an error occurs, or it is not possible to determine the coordinates, `null` will be returned
 
 ### Request
 ```
 {
-	"neighborhood" : ["south end"]
-	"address" : [...]
+	"neighborhood" : "south end",
+	"address" : null
 }
 ```
 
 ### Response
 ```
-{
-	"location" : "lat,lon"
-}
+"lat,lon"
 ```
 
-## Goolge Places Search
+### Usage
 
-This piece will take a set of resaurant search criteria and returns an array of up to three restaurant suggestions
+```
+var LocationSearch = require('./LocationSearch');
+
+...
+
+var locationRequest = {...};
+
+...
+
+LocationSearch.find(locationRequest)
+```
+
+## Restaurants Search
+
+This piece will take a location, food type and pricing range (0,1,2,3 or 4) and return up to three restaurants, sorted by rating
 
 ### Request
 ```
 {
 	"location" : "lat,lon",
 	"foodType" : "pizza",
-	"pricing" : "2"
+	"pricing" : 2
 }
 ```
 
@@ -107,6 +120,23 @@ This piece will take a set of resaurant search criteria and returns an array of 
 	"rating" : 2.0,
 	"website" : "https://www.papajohns.com/",
 	"googleUrl" : "https://www.google.com/maps/place/Papa+John's+Pizza/@34.3904308,-95.7067308,4z/data=!4m8!1m2!2m1!1spapa+johns!3m4!1s0x89c25c885de75af9:0xde14a07dc3c1a18c!8m2!3d40.6651176!4d-73.9225862"
-},{...},{...}]
+},{
+	...
+},{
+	...
+}]
 ```
 
+### Usage
+
+```
+var RestaurantsSearch = require('./RestaurantsSearch');
+
+...
+
+var restaurantsRequest = {...};
+
+...
+
+RestaurantsSearch.find(restaurantsRequest);
+```
