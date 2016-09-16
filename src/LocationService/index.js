@@ -1,11 +1,11 @@
 var GoogleGeoCoderAPI = require('./geocoder');
 
-var GeoCoder = {};
+var LocationService = {};
 
 /**
  * Returns a location object
  */
-GeoCoder.find = function (locationRequest) {
+LocationService.find = function (locationRequest) {
 
     return new Promise(function (resolve) {
 
@@ -59,8 +59,8 @@ GeoCoder.find = function (locationRequest) {
 
             if (location) {
 
-              // Resolve with a latitude and longitude string
-              resolve(location.lat+","+location.lng);
+              // Resolve with a latitude and longitude array
+              resolve([location.lat,location.lng]);
 
             } else {
 
@@ -75,4 +75,4 @@ GeoCoder.find = function (locationRequest) {
 
 }
 
-module.exports = GeoCoder;
+module.exports = LocationService;

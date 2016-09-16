@@ -83,7 +83,7 @@ If an error occurs, or it is not possible to determine the coordinates, `null` w
 
 ### Response
 ```
-"lat,lon"
+["lat","lon"]
 ```
 
 ### Usage
@@ -102,7 +102,7 @@ var locationPromise = LocationService.find(locationRequest)
 
 ## Restaurants Search
 
-This piece will take a location, food type and pricing range (0,1,2,3 or 4) and return up to three restaurants, sorted by rating
+This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) and return up to three restaurants, sorted by rating
 
 ### Request
 ```
