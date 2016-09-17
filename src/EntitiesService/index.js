@@ -29,10 +29,10 @@ EntitiesService.clean = function (text) {
 
 module.exports = EntitiesService
 
-Tagger.init().then(() => {
-  console.log('ready')
-  EntitiesService.tag({ message: 'with that said the ribs are the best' }).then((results) => {
-    console.log('results')
-    console.log(results)
-  })
-})
+// Tagger.init().then(() => {
+//   console.log('ready')
+//   EntitiesService.tag({ message: 'with that said the ribs are the best' }).then((results) => {
+//     console.log('results')
+//     console.log(results)
+//   })
+// })
