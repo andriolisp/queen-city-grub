@@ -2,18 +2,7 @@ var MuxController = require('./MuxController');
 var ReplyController = require('./ReplyController');
 
 var MessageController = function () {};
-
-var buildMessageReply = function (sender, token, message) {
-    MuxController.handleMessageRequest(sender, message).then(function (res) {
-        if (res.isDone){
-            buildCaroselReply(sender, token, res)
-        } else {
-            buildQuickReply(sender, token, res)
-        }
-    });
-}
-
-function buildQuckReply(sender, token, obj) {
+var buildQuickReply = function (sender, token, obj) {
     
     var quickReplies = [
         {
@@ -35,7 +24,7 @@ function buildQuckReply(sender, token, obj) {
     
 }
 
-function buildCaroselReply(sender, token, res){
+var buildCaroselReply = function (sender, token, res){
     
     var elements = [];
     
@@ -87,13 +76,33 @@ function buildCaroselReply(sender, token, res){
     
 }
 
+var buildMonteCarloReply = function (sender, token, response) {
+    MuxController.handleMonteCarloRequest(sender, response).then(function (res){
+        if (res.isDone){
+            buildCaroselReply(sender, token, res)
+        } else {
+            buildQuickReply(sender, token, res)
+        }
+    }).catch(console.log);
+}
+
+var buildMessageReply = function (sender, token, message) {
+    MuxController.handleMessageRequest(sender, message).then(function (res){
+        if (res.isDone){
+            buildCaroselReply(sender, token, res)
+        } else {
+            buildQuickReply(sender, token, res)
+        }
+    }).catch(console.log);
+}
+
 MessageController.messageLookup = function (sender, text, token, req, res, recipient) {
     
     var textToReturn = "";
     var passThrough = "yes";
     var theData = null;
     var newtext = text.toLowerCase();
-    
+
     // Let facebook know it was received
     ReplyController.sendReceived(sender, token);
   
