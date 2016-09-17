@@ -1,5 +1,6 @@
 var cache = require('memory-cache');
 var montecarloService = require('../../src/MontecarloService');
+var searchService = require('../../src/SearchService')
 
 var ProberService = {
   getUserSuggestions: function (request) {
@@ -7,19 +8,23 @@ var ProberService = {
       if (request !== null && request !== undefined && request.monteCarlo && (request.userId !== null && request.userId !== undefined)) {
         var response = isNaN(request.response) ? 0 : parseInt(request.response);
         var mcUserService = cache.get(request.userId);
-        if(!mcUserService) {
+        if (!mcUserService) {
           cache.put(request.userId, montecarloService.Initialize());
           mcUserService = cache.get(request.userId);
-        } else { 
+        } else {
           mcUserService.Reply(response);
         }
 
-        request.question = mcUserService.GetSuggestion();
-        request.done = mcUserService.GetResult();
-        resolve(request); 
+        if (mcUserService.GetResult()) {
+          request.entities.foodType = mcUserService.GetFinalSuggestion();
+          searchService.find(request).then(resolve);
+        } else {
+          request.question = mcUserService.GetSuggestion();
+          resolve(request);
+        }
       } else {
         request.question = "";
-        request.done = false;
+        request.isDone = false;
         reject(request);
       }
     });
