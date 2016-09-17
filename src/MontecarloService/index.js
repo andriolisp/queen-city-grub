@@ -1,5 +1,5 @@
 var fs = require('fs');
-var foods = JSON.parse(fs.readFileSync('./Data/food.json', 'utf8'));
+var foods = JSON.parse(fs.readFileSync('../../Data/food.json', 'utf8'));
 
 var MonteCarloObject = function(params){
   this.params = params;
