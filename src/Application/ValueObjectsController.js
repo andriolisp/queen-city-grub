@@ -37,7 +37,7 @@ ValueObjectsController.getStarted = function() {
                 "template_type": "generic",
                 "elements": [ {
                    "title": "Welcome to Queen City Grub",
-                    image_url: "http://messengerdemo.parseapp.com/img/rift.png" 
+                    image_url: "https://www.dropbox.com/s/dg0mc8pvitiuvqa/welcome-screen.jpg?dl=0" 
                 }]
             }
         }
@@ -53,7 +53,7 @@ ValueObjectsController.getStarted = function() {
                 "elements": [{
                     "title": "I don’t know",
                     "subtitle": "Surprise me…",
-                    "image_url": "http://vdex.com/shopby/images/fashion.png",
+                    "image_url": "https://www.dropbox.com/s/ms9ul7afotde3im/im-not-sure.jpg?dl=0",
                     "buttons": [{
                         "type": "postback",
                         "title": "Help me find it",
@@ -62,7 +62,7 @@ ValueObjectsController.getStarted = function() {
                    }, {
                     "title": "Mexican",
                     "subtitle": "Mild or Spicy you will love it",
-                    "image_url": "http://vdex.com/shopby/images/homegarden.png",
+                    "image_url": "https://www.dropbox.com/s/7rpqhaawn3vn4zk/mexican-food.jpg?dl=0",
                     "buttons": [{
                         "type": "postback",
                         "title": "Get some",
@@ -71,7 +71,7 @@ ValueObjectsController.getStarted = function() {
                    },  {
                     "title": "Italian",
                     "subtitle": "Mamma Mia that’s a spicy meatball",
-                    "image_url": "http://vdex.com/shopby/images/electronics.png",
+                    "image_url": "https://www.dropbox.com/s/mz673aq12o9qtrp/italian-food.jpg?dl=0",
                     "buttons": [{
                         "type": "postback",
                         "title": "Get some",
@@ -80,7 +80,7 @@ ValueObjectsController.getStarted = function() {
                    },  {
                     "title": "American",
                     "subtitle": "Y-all get it while its hot",
-                    "image_url": "http://vdex.com/shopby/images/entertainment.png",
+                    "image_url": "https://www.dropbox.com/s/v02q1fc3hn5ewfg/american-food.jpg?dl=0",
                     "buttons": [{
                         "type": "postback",
                         "title": "Get some",
@@ -89,7 +89,7 @@ ValueObjectsController.getStarted = function() {
                    },  {
                     "title": "Chinese",
                     "subtitle": "Fortune Cookie Time",
-                    "image_url": "http://vdex.com/shopby/images/sports.png",
+                    "image_url": "https://www.dropbox.com/s/mzss0lab48ahhtk/chinese-food.jpg?dl=0",
                     "buttons": [{
                         "type": "postback",
                         "title": "Explore Sports",
