@@ -33,10 +33,7 @@ function getPlaces (api, searchCriteria) {
 function getDetails (api, placeId) {
   return new Promise(function (resolve) {
     api.details({placeid: placeId}, function (err, res) {
-      if (err) {
-        resolve(null)
-        return
-      } else if (res.status !== 'OK') {
+      if (err || res.status !== 'OK') {
         resolve(null)
         return
       } else {
