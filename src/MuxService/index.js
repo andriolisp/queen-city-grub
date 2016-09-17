@@ -13,6 +13,7 @@ MuxService.handleRequest = function (request) {
     } else {
       classifierService.classify(request).then(function (request) {
         if (request.classifier.recommend) {
+          request.monteCarlo = true
           proberService.getUserSuggestions(request).then(resolve)
         } else {
           entitiesService.tag(request).then(function (request) {
