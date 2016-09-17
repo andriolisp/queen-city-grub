@@ -104,13 +104,13 @@ app.post('/messengerwebhook/', function (req, res) {
         recipient = event.recipient.id;
 
          
-        if (event.message && event.message.quick_reply) {
+        if (event.message && event.message.quick_reply && !event.message.is_echo) {
              console.log('Quick Reply');
             
             QuickReplyController.handle(sender, event.message.quick_reply.payload, token, req, res);
              continue
          }
-        if (event.message && event.message.text) {
+        if (event.message && event.message.text && !event.message.is_echo) {
             
             text = event.message.text
             var newtext = text.toLowerCase();
