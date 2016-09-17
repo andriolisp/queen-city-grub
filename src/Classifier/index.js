@@ -77,7 +77,7 @@ Classifier.classify = function (request) {
   }
   return _.merge(request, {
     'classifier': {
-      'highend': getValue(message, adjectives) != null || intentValue === 'highend',
+      'highEnd': getValue(message, adjectives) != null || intentValue === 'highend',
       'recommend': isRecommend,
       'food': foundFood,
       'location': getValue(message, neighborhoods),
