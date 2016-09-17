@@ -95,7 +95,7 @@ Classifier.classify = function (request) {
 function getValue (message, data) {
   var val = null
   data.forEach(function (el, id, arr) {
-    if (message.indexOf(el.toLowerCase()) !== -1) {
+    if (message.toLowerCase().indexOf(el.toLowerCase()) !== -1) {
       val = el.toLowerCase()
       return false
     }
