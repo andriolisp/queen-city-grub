@@ -1,6 +1,7 @@
 var cache = require('memory-cache');
 var montecarloService = require('../../src/MontecarloService');
-var searchService = require('../../src/SearchService')
+var searchService = require('../../src/SearchService');
+var _ = require('lodash');
 
 var ProberService = {
   getUserSuggestions: function (request) {
@@ -15,8 +16,9 @@ var ProberService = {
           mcUserService.Reply(response);
         }
 
-        if (mcUserService.GetResult()) {
-          request.entities.foodType = mcUserService.GetFinalSuggestion();
+        var isDone = mcUserService.GetResult();
+        if (isDone) {
+          _.set(request, 'entities.foodType', mcUserService.GetFinalSuggestion());
           searchService.find(request).then(resolve);
         } else {
           request.question = mcUserService.GetSuggestion();
