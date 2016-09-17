@@ -11,11 +11,11 @@ from model import Model
 
 optparser = optparse.OptionParser()
 optparser.add_option(
-    "-m", "--model", default="models/english/",
+    "-m", "--model", default="models/food/",
     help="Model location"
 )
 optparser.add_option(
-    "-d", "--delimiter", default="__",
+    "-d", "--delimiter", default=" ",
     help="Delimiter to separate words from their tags"
 )
 opts = optparser.parse_args()[0]
@@ -75,5 +75,5 @@ while 1:
             y_preds = iobes_iob(y_preds)
         # Write tags
         assert len(y_preds) == len(words)
-        sys.stdout.write('%s\n' % ' '.join('%s%s%s' % (w, opts.delimiter, y)
+        sys.stdout.write('%s' % ''.join('%s%s%s\n' % (w, opts.delimiter, y)
                                             for w, y in zip(words, y_preds)))
