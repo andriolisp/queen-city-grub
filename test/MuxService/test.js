@@ -1,6 +1,7 @@
 var muxService = require('../../src/MuxService')
 var request = {
-  'message': 'I want some mexican food',
-  'defaultLocation': ['35.2270869', '-80.8431267']
+  'message': 'I want some German',
+  'defaultLocation': ['35.2270869', '-80.8431267'],
+  'monteCarlo': false
 }
 muxService.handleRequest(request).then(console.log)
