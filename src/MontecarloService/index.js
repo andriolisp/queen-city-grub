@@ -1,19 +1,43 @@
 var fs = require('fs');
 var foods = JSON.parse(fs.readFileSync('../../Data/food.json', 'utf8'));
 
+var MonteCarloObject = function(params){
+  this.params = params;
+};
+
+MonteCarloObject.prototype.Reply = function(answer){
+  MonteCarloService.SetAnswer(this.params, this.params.suggestion, answer);
+}
+
+MonteCarloObject.prototype.GetSuggestion = function(){
+  return this.params.suggestion;
+}
+
+MonteCarloObject.prototype.GetResult = function() {
+  return this.params.result;
+}
+
+MonteCarloObject.prototype.GetFinalSuggestion = function() {
+  return this.params.finalSuggestion;
+}
+
 var MonteCarloService = {
+  Initialize: function() {
+    return MonteCarloService.SetAnswer(null, "", 0);
+  },
   SetAnswer: function (o, keyword, answer) {
     answer = isNaN(answer) ? 0 : parseInt(answer);
     if (o == null || !o) {
-      o = {
+      o = new MonteCarloObject({
         keywords: {},
         hasKeywords: false,
         suggestion: MonteCarloService.GetRandomSuggestion(),
         result: false,
-        productData: GetFoodObject(),
-        restaurantSuggestion: null,
-        total: 1
-      };
+        productData: MonteCarloService.GetFoodObject(),
+        finalSuggestion: null,
+        total: 1,
+        input: 0
+      });
     } else {
       if (keyword && keyword.trim().length > 0) {
         o.hasKeywords = true;
@@ -35,12 +59,12 @@ var MonteCarloService = {
 
       o.productData = MonteCarloService.FeedResults(o, keyword, o.keywords[keyword])
 
-      restaurantSuggestion = '';
+      finalSuggestion = '';
       restaurantPoints = 0;
       o.productData.forEach(function (p, i) {
         if (p.points > restaurantPoints) {
           restaurantPoints = p.points;
-          restaurantSuggestion = p.name;
+          finalSuggestion = p.name;
         }
       }, this);
 
@@ -50,7 +74,7 @@ var MonteCarloService = {
         o.hasKeywords = false;
         o.suggestion = '';
         o.result = true;
-        o.restaurantSuggestion = restaurantSuggestion;
+        o.finalSuggestion = finalSuggestion;
         o.productData = null;
       }
 
@@ -83,7 +107,7 @@ var MonteCarloService = {
     }
     return index;
   },
-  GetFoodObject = function () {
+  GetFoodObject: function () {
     var food = [];
     var hasInfo = false //);
     var foodList = foods;
@@ -129,7 +153,7 @@ var MonteCarloService = {
 
     return food;
   },
-  FeedResults = function (o, keyword, value) {
+  FeedResults: function (o, keyword, value) {
     if (o.productData !== null && o.productData !== undefined && value > 0) {
       o.productData.forEach(function (f, i) {
         o.productData[i].childs.forEach(function (c, i2) {
@@ -173,9 +197,9 @@ var MonteCarloService = {
 
     return o.productData;
   },
-  GetRandomSuggestion = function (o) {
+  GetRandomSuggestion: function (o) {
     if (o !== null && o !== undefined && o.productData !== null && o.productData !== undefined && o.productData.length > 0) {
-      var words = MonteCarlosService.GetWords(o.productData);
+      var words = MonteCarloService.GetWords(o.productData);
     } else {
       var words = MonteCarloService.GetWords();
     }
