@@ -12,10 +12,10 @@ MuxService.handleRequest = function (request) {
       proberService.getUserSuggestions(request).then(resolve)
     } else {
       classifierService.classify(request).then(function (request) {
-        if (request.classify.recommend) {
+        if (request.classifier.recommend) {
           proberService.getUserSuggestions(request).then(resolve)
         } else {
-          entitiesService.tagEntitities(request).then(function (request) {
+          entitiesService.tag(request).then(function (request) {
             searchService.find(request).then(resolve)
           })
         }

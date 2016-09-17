@@ -2,12 +2,13 @@
 
 ## Intent/Classifier
 This piece will take a sentence and return json object with basic information 
-about what they want. 
+about what they want. This will find location and foodType if we have it in our datasets.
+If we don't have any in our datasets, the search will rely on entity tagger to find that info
 
 message == the actual message
 highEnd == true when they specifiy that they want some want highend place
 recommend == true if they'd like to be recommended a place instead
-food == will have a specific food type they might have asked for
+foodType == will have a specific food type they might have asked for
 location == location if a location was found in the message 
 
 ## Request
@@ -24,7 +25,7 @@ location == location if a location was found in the message
       {
         "highEnd": false,
         "recommend": false,
-        "food": "mexican food",
+        "foodType": "mexican food",
         "location": "south end",
       }
 }
@@ -44,7 +45,7 @@ location == location if a location was found in the message
       {
         "highEnd": false,
         "recommend": true,
-        "food": null,
+        "foodType": null,
         "location": null,
       }
 }
