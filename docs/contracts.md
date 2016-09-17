@@ -19,12 +19,16 @@ location == location if a location was found in the message
 ### Response
 ```
 {
-	"message": "I'm looking for mexican food in south end",
-	"highEnd": false,
-  "recommend": false,
-  "food": "mexican food",
-  "location": "south end",
+  "message": "I'm looking for mexican food in south end",
+  "classifier": 
+      {
+        "highEnd": false,
+        "recommend": false,
+        "food": "mexican food",
+        "location": "south end",
+      }
 }
+  
 
 ## Request
 ```
@@ -35,12 +39,16 @@ location == location if a location was found in the message
 ### Response
 ```
 {
-	"message": "Would you recommend a place to eat",
-	"highEnd": false,
-  "recommend": true,
-  "food": null
-  "location": null,
+  "message": "Would you recommend a place to eat",
+  "classifier": 
+      {
+        "highEnd": false,
+        "recommend": true,
+        "food": null,
+        "location": null,
+      }
 }
+  
 
 ## Entity Tagger
 

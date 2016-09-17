@@ -33,7 +33,8 @@ Classifier.train = function () {
   return intentClassifier
 }
 // given a message, classify it depending on some key values
-Classifier.classify = function (message) {
+Classifier.classify = function (request) {
+  var message = request['message']
   var intentClassifier = Classifier.train()
   var intent = intentClassifier.getClassifications(message)
   var intentValue = intentClassifier.classify(message)
@@ -74,18 +75,15 @@ Classifier.classify = function (message) {
   if (foundFood != null) {
     isRecommend = false
   }
-
-  var result = {
+  return _.merge(request, {
     'classifier': {
-      'message': message,
       'highend': getValue(message, adjectives) != null || intentValue === 'highend',
       'recommend': isRecommend,
       'food': foundFood,
       'location': getValue(message, neighborhoods),
       'monteCarlo': null
     }
-  }
-  return result
+  })
 }
 
 function getValue (message, data) {
