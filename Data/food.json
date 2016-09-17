@@ -12,11 +12,54 @@
 	"american": 
 		["American Chinese cuisine","Biscuit","Bread","Cuisine of Antebellum America","Cuisine of the Thirteen Colonies","Ammonia cookie","Apple butter","Apple sauce","Baked potato","Barbecue","Bear claw","Beef Manhattan","Blue cheese dressing","Blue-plate special","Bookbinder Soup","Breakfast burrito","Brunswick stew","Buffalo burger","Buffalo wing","Bull roast","Burnt ends","Butter cookie","Cajun cuisine","Calf's liver and bacon","Carne pizzaiola","Carolina style","Celery Victor","Cheese dog","Cheese fries","Chicken à la King","Chicken and waffles","Chicken Divan","Chicken fingers","Chicken French","Chicken fried bacon","Chicken fried steak","Chicken nugget","Chicken sandwich","Chili con carne","Chili dog","Chips and dip","Choco pie","Chowder","Chimichanga","City chicken","Clam cake","Clam chowder","Coleslaw","Cordon bleu (dish)","Corn chowder","Corn dog","Corn flakes","Corn relish","Corned beef","Cornish game hen","Cowboy beans","Crab cake","Creamed corn","Creamed eggs on toast","Deviled crab","Deviled egg","Domesticated turkey","Doughnut","Drunken chicken","Eggo","Eggs Benedict","Eggs Neptune","Energy bar","Engastration","Fajita","Fortune cookie","French Dip","Fried chicken","Fried fish","Fry sauce","Frybread","Garden salad","Goulash","Greek-American cuisine","Green bean casserole","Grits","Hangtown fry","Haystack","Hog fry","Home fries","Hot chicken","Hot Chicken sandwich","Ice cream cake","Italian-American cuisine","Italian dressing","Jell-O","Jerky","Juba","Liver and onions","Lobster roll","Lobster Newberg","London broil","Lorna Doone (cookie)","Macaroni and cheese","Macaroni salad","Maple bacon donut","Maraca pie","Mashed potato","Mashed pumpkin","Meatcake","Meatloaf","Milk toast","Milkshake","Mission burrito","Mozzarella sticks","Muffuletta","Mulligan stew","Onion ring","Oreo","Oysters Rockefeller","Pancakes","Pasta salad","Pastrami","Patty","Peanut butter","Pemmican","Pepperoni","Philadelphia cheesesteak","Pickled cucumber","Pigs in blankets","Pizza strips","Ploye","Pop-Tarts","Popover","Poppyseed muffin","Pork and beans","Potato salad","Potato skins","Potato wedges","Potatoes O'Brien","Protein bar","Pulled pork","Pumpkin pie","Rabbit pie","Ranch dressing","Reuben sandwich","Ribs","Rolled oyster","Russian dressing","Russian tea cake","Salisbury steak","Sandwich","Sausage gravy","Scampi","Scrapple","Seafood cocktail","Senate bean soup","Slinger","Sloppy joe","Smelt (fish)","Sonofabitch stew","Soulfood","Sour cream","Spanish rice","Squab","Steak sandwich","Steak sauce","Steamed clams","Stuffed ham","Stuffed peppers","Stuffed zucchini","Succotash","Surf and turf","Swiss steak","Tetrazzini","Thousand Island dressing","Toaster Strudel","Tomato compote","Tuna casserole","Turducken","Vichyssoise","Waffle","Milk Steak"],
 
+  "mexican": 
+    ["Aguachile","Bolillos (salty bread)","Burrito","Calabaza (squash)","Camote (Mexican sweet potato)","Caviar de Carpa","Gorditas","Gringas","Cemitas sandwiches","Chalupa","Chapulines and escamoles","Charales, small fish, basically a type of smelt","Chicharrón","Chilaquiles","Chilaquiles","Chiltomate","Chimichangas","Choriqueso","Chorizo","Churipo","Coachala","Ceviche","Cochinita pibil is a traditional Mexican slow-roasted pork dish from the Yucatán Península of Mayan origin","Cochinita pibil","Cocido","Cóctel de camarón and other seafood cocktails","Codzito","Cola de res con frijoles (beef tail with beans)","Corunda","Curtido","Elote","Enchilada (red or green)","Ensalada de fruta (fruit salad)","Enfrijoladas","Entomatadas","Filete de pescado al mojo de ajo","Filete de pescado empanizado","Flautas with guacamole","Flautas","Frijoles charros","Fritadas de camarón","Gorditas de carne","Huauzontles","Huaraches","Jicama","Jocoque","Lengua","Lentil soup","Longaniza","Machaca","Mancha manteles","Memela","Menudo","Molotes","Menudo","Mixiotes","Mole de Olla","Mole poblano","Mole Poblano","Molletes","Molotes","Moronga","Mulitas","Nachos","Pambazos","Panucho","Papadzules","Parilladas","Pastel Azteca","Pejelagarto","Picadillo","Pozole","Quesadillas","Quesos artesanales","Cheeses of Mexico","Rajas con crema","Romeritos","Salbutes","Sincronizadas","Sopes","Sopes","Sopa de albondiga (meatball soup)","Tacos","Taco al pastor","Taco Sinaloa","Tamales","Taquitos","Tlacoyos","Tlayudas","Totopo","Tortas","Tortas","Tortillas","Tostadas","Tripas","Vena",
+    "Yuca"],
+
+  "Italian": 
+	  ["Bari","Biga","Buccellato","Casatiello","Ciabatta","Ciaccino","Ciriola","Colimba Pasquale","Crocche","Farinata","Bruschetta – small pieces of toast with tomatoes, cheese and herbs.","Capicollo – a luncheon meat that’s spicy.","Insalata capreses – a salad","Mozzarelline fitte – fried small mozzarellas","Olives","Prosciutto – a ham type of luncheon meat","Salami","Nervetti – beef with onions","Acquacotta","Bagna cauda","Garmugia","Minestrone","Pasta e fagioli","Grine Sauce","Straciatella"],
+  
+  
 	"rice": 
 		["American fried rice", "Calas", "Charleston red rice", "Chicken bog", "Dirty rice", "Glorified rice", "Gumbo", "Hawaiian haystack", "Hokkien fried rice", "Hoppin' John", "Jambalaya", "Rice and gravy", "Shrimp Creole", "Spanish rice", "Yeung Chow fried rice"],
 
 	"meats":
 		 ["Andouille" ,"Bologna sausage" ,"Breakfast sausage" ,"Chorize" ,"Chaudie" ,"Goette" ,"Half-smoke" ,"Hot doe" ,"Italian hot doe" ,"Polish Sausage" ,"Polska Kielbasae" ,"Lebanon bologne" ,"Maxwell Street Polise" ,"Polish Boe" ,"Salame" ,"Vienna sausage", "Bacon","BBQ Chicken","Beef","Cajun Chicken","Chicken Masala","Chicken Tikka","Chorizo","Duck","Ham","Honey Cured Ham","Meatballs","Pepperoni","Proscuitto","Salami","Sausage","Serrano Ham","Turkey","Venison"],
+
+  "Japanese": 
+    ["rice","egg","flour","meat","mushrooms","noodle", "ramen","soy products","vegetables","sushi","eel","pufferfish","crab","tobiko","salmon|salmon fish","shrimp", "prawn","surimi","mefun","motoyaki","takifugu","fish","fish ball","kamaboko","crab stick","Whale meat","Dolphin meat","sushi","onigiri","donburi","o-kayu","o-chazuke","furikake","mochi","sekihan","Teppanyaki","Shabu-shabu","Yakiniku","Teriyaki","Menchi Katsu","Nikujaga","Nirareba","Tebasaki","Yakitori","Chicken Tatsuta","Torizosui","Karage","Mizutaki","Banbanji","Oyako-don","Grilled Miso Chicken","Tori no Mizutaki","Nikkuman","Shogayaki","Tonkatsu","Edamame","Buta Kakuni","Kushiage","Katsudon","Goya Chanpuru","Harumaki","Okonomiyaki","Buta-jiru","Miso-katsu","Basashi","Kabocha Korokke","Gomaae","Kabocha","Kinpira Gobo","Maguro sashimi","Mabo Nasu","Yakinegi","Kurumiae","Horenso Ohitashi"],
+
+  "french": 
+    ["Basil salmon terrine","Bisque is a smooth and creamy French potage","Foie gras with mustard seeds and green onions in duck jus","Croque monsieur","Plat principal","Pot au feu is a cuisine classique dish","Steak frites is a simple and popular dish","Baguette often accompanies the meal","Mille-feuille","Macaron","Eclair","Crème brûlée","Mousse au chocolat","Crêpe","Café liégeois","Bisque","Bouillabaisse – a stew of mixed Mediterranean fish, tomatoes, and herbs","Consommé","French onion soup","Garbure","Lettuce soup","Oille – a French potée or soup believed to be the forerunner of pot-au-feu composed of various meats and vegetables","Potée","Ragout"],
+
+    "chinese": 
+      ["Bang Tofu",
+      "Bright Pearl Abalone","Caterpillar Fungus Duck","Crab and Fish Stomachs",
+      "Crab-apple Flower Cake","Dried Pot Tofu","Five Colours Fish Cake","Flower Mushroom Frog",
+      "Fried Pumpkin Dumplings","Fried Tofu Curd Balls","Fuli Roast Chicken","Ginger Duck",
+      "Hay Wrapped Fragrant Ribs","Jade Rabbit Sea Cucumber","Lotus Seed Pod Fish",
+      "Phoenix Tail Shrimp","Potato Croquet","Silver Fish Fried Egg","Soy Braised Mandarin Fish"
+      ,"Peking Duck","Zhajiangmian","Xianbing","Crullers", 
+      "Bao yu Braised abalone","Baobing Shaved ice","Beef chow fun",
+      "Bird's nest soup","Black sesame soup","Cantonese seafood soup","Char siu",
+      "Crispy fried chicken","Duck with taro","Guilinggao","Little pan rice",
+      "Red bean soup","Roast squab","Roast pig","Sea cucumber","Seafood birdsnest",
+      "Shark fin soup","Snow fungus soup","Sour spare ribs","Spare ribs",
+      "White cut chicken","Winter melon soup","Wonton noodles",
+      "Yeung Chow fried rice","Youtiao","Zhaliang","Yusheng","Popiah",
+      "Buddha jumps over the wall","Fried rice  in Fujian style","Oyster omelette"
+      ,"Popiah","Yanpi","fujian red wine chicken",    
+      "Hainanese chicken rice","Wenchang chicken","Chicken with chilies Chongqing spicy deep-fried chicken",
+      "Dandan noodles","Fuqi Feipian","Hot pot Sichuan hotpot","Kung Pao chicken","Mapo tofu","Shuizhu",
+      "Twice cooked pork","Zhangcha duck","Over Bridge Rice Noodles","Beggar's Chicken",
+      "Braised Sliced Pork with Preserved Vegetables","Cold Chicken Cooked in Wine",
+      "Dongpo Braised Pork","Fish Ball in Light Soup","Fried Eel Slices",
+      "Fried Pigeon with Spiced Salt","Fried Shrimps with Longjing Tea",
+      "Fried Stuffed Bean Curd Paste","Fried Sweet and Sour Pork",
+      "Hangzhou-Style Duck Pickled in Soy Sauce","Old Duck Stewed with Bamboo Root & Ham",
+      "Red-Stewed Duck","Sauteed Broad Beans with Ham","Sauteed Shrimps","Sizzling Rice in Tomato Sauce",
+      "Steamed Pork with Rice Flour in Lotus Leaf","Stewed Spring Bamboo Shoots",
+      "Stir-Fried Spring Chicken with Chestnuts","West Lake Fish in Vinegar Sauce"],
 
 	"random":
 		["asparagus","apples","avacado","alfalfa","acorn squash","almond","arugala","artichoke","applesauce","asian noodles","antelope","ahi tuna","albacore tuna","Apple juice","Avocado roll","Bruscetta","bacon","black beans","bagels","baked beans","BBQ","bison","barley","beer","bisque","bluefish","bread","broccoli","buritto","babaganoosh","Cabbage","cake","carrots","carne asada","celery","cheese","chicken","catfish","chips","chocolate","chowder","clams","coffee","cookies","corn","cupcakes","crab","curry","cereal","chimichanga","dates","dips","duck","dumplings","donuts","eggs","enchilada","eggrolls","English muffins","edimame","eel sushi","fajita","falafel","fish","franks","fondu","French toast","French dip","Garlic","ginger","gnocchi","goose","granola","grapes","green beans","Guancamole","gumbo","grits","Graham crackers","ham","halibut","hamburger","honey","huenos rancheros","hash browns","hot dogs","haiku roll","hummus","ice cream","Irish stew","jambalaya","jelly jam","jerky","jalapeño","kale","kabobs","ketchup","kiwi","kidney beans","kingfish","lobster","Lamb","Linguine","Lasagna","Meatballs","Moose","Milk","Milkshake","Noodles","Ostrich","Pizza","Pepperoni","Porter","Pancakes","Quesadilla","Quiche","Reuben","Spinach","Spaghetti","Tater tots","Toast","Venison","Waffles","Wine","Walnuts"]
