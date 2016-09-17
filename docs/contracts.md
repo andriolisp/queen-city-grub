@@ -90,6 +90,11 @@ If neither address or neighborhood is known, the defaultLocation will be used as
 {
   "message" : "...",
   "defaultLocation" : ["lat","lng"],
+  "classifier" : {
+    "highEnd" : true,
+    "foodType" : "...",
+    "neighborhood" : "..."
+  }
   "entities" : {
     "address" : [...],
     "neighborhood" : [...],

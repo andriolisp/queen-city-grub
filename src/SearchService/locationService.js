@@ -1,4 +1,5 @@
 var GoogleGeoCoderAPI = require('./geocoder')
+var _ = require('lodash')
 
 var LocationService = {}
 
@@ -13,12 +14,18 @@ LocationService.find = function (request) {
     // An address to match on
     var address = null
 
-    if ('address' in request.entities && _.count(request.entities.address) > 0) {
+    // Get the address entity
+    var addressEntity = _.get(request, 'entities.address.0', null)
+
+    // Get the neighborhood entity
+    var neighborhoodEntity = _.get(request, 'classifier.neighborhood', _.get(request, 'entities.neighborhood.0'))
+
+    if (addressEntity != null) {
       // Prefer an address if it is given
-      address = request.entities.address[0]
-    } else if ('neighborhood' in request.entities && _.count(request.entities.neighborhood) > 0) {
+      address = addressEntity
+    } else if (neighborhoodEntity) {
       // Use a neighborhood component if no address is available
-      components.push('neighborhood:' + request.entities.neighborhood[0])
+      components.push('neighborhood:' + neighborhoodEntity)
     } else {
       // If we don't have either, resolve the request
       resolve(request)

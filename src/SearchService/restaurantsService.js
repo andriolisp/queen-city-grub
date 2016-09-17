@@ -54,13 +54,19 @@ RestaurantsService.find = function (request) {
     // Create a new instance of the Google Places API
     var api = new GooglePlacesAPI('AIzaSyDJxv_zb4nnlWEaOeVXZC5iXUQRKSKN5uI')
 
+    // Get the food type
+    var foodTypeEntity = _.get(request, 'classifier.foodType', _.get(request, 'entities.foodType.0'))
+
+    // Does the customer want high end food?
+    var maxPrice = _.get(request, 'classifier.highEnd', false) ? 4 : 2
+
     // Build the search criteria for Google Places API
     var searchCriteria = {
-      'radius': 11265.4, // Look within 10 mile radius of location?
+      'radius': 11265.4, // Look within 7 mile radius of location?
       'type': 'restaurant', // We only want restaurants
-      'keyword': request.entities.foodType[0],
+      'keyword': foodTypeEntity,
       'location': request.location || request.defaultLocation,
-      'maxprice': 2,
+      'maxprice': maxPrice,
       'minprice': 0
     }
 
