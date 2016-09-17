@@ -108,10 +108,14 @@ PostbackController.handle = function(sender, text, token, req, res) {
 
     // Let facebook know it was received
     ReplyController.sendReceived(sender, token);
+
+    console.log("Don't know");
     
     switch(newtext) {
    
         case "admindontknow":
+            console.log("In don't know");
+
             buildMonteCarloReply(sender, token, null);
             break;
 

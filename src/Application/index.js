@@ -86,6 +86,9 @@ app.get('/messengerwebhook/', function(req, res) {
 app.post('/messengerwebhook/', function (req, res) {
   console.log('QUEENCITYGRUB: POST = messengerwebhook req = '+req);
     //req.session.lastPage = '/messengerwebhook';
+
+    console.log(req.body);
+    
     messaging_events = req.body.entry[0].messaging;
     console.log('QUEENCITYGRUB: INDEX ========================================');
 
