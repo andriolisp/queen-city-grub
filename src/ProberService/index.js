@@ -16,7 +16,7 @@ var ProberService = {
     var yesPrefix = ["Awesome! ", "Sweet! ", "Cool! ", "Great! I love it too! "];
     var noPrefix = ["Too bad! ", "Good! %oldSuggestion% is gross. ", "Really? Oh well... ", "Well, that happens... "];
     var maybePrefix = ["Hmm... ", "Well... ", "Life goes on... ", "Being difficult, hah? "];
-    var phrases = ["Do you like %suggestion%?", "Would you like to have %suggestion%?", "Does %suggestion% sounds good?", "Are you a %suggestion% person?", "Would you like %suggestion%, %suggestion% or %suggestion%?"];
+    var phrases = ["Do you like %suggestion%?", "Would you like to have %suggestion%?", "Does %suggestion% sounds good?", "Are you a %suggestion% person?", "Would you like %suggestion% or %suggestion%?"];
     var message = '';
     var randomNumber = 0
     if(oldSuggestion && oldSuggestion.length > 0) {
