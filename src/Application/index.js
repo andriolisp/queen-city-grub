@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('./public'));
 
 // Process application/json
 app.use(bodyParser.json());
@@ -95,26 +95,31 @@ app.post('/messengerwebhook/', function (req, res) {
     for (i = 0; i < messaging_events.length; i++) {
 
         console.log(req.body.entry[0].messaging[i]);
+
+        event = req.body.entry[0].messaging[i]
+        sender = event.sender.id;
+        recipient = event.recipient.id;
+
          
         if (event.message && event.message.quick_reply) {
-            console.log("Quick Reply");
-
+             console.log('Quick Reply');
+            
             QuickReplyController.handle(sender, event.message.quick_reply.payload, token, req, res);
              continue
          }
         if (event.message && event.message.text) {
-            console.log("Message Reply");
             
             text = event.message.text
             var newtext = text.toLowerCase();
-            
+            console.log('Message Reply');
+           // req.session.eventpath = '/message';
             MessageController.messageLookup(sender, newtext, token, req, res, recipient);
             continue
             
         }
         if (event.postback) {
-            console.log("Postback Reply");
             
+            console.log('Postback Reply');
             var newtext = event.postback.payload.toLowerCase();
             PostbackController.handle(sender, newtext, token, req, res);
             
@@ -127,4 +132,5 @@ app.post('/messengerwebhook/', function (req, res) {
 
 app.listen(app.get('port'), function() {
   console.log('QUEENCITYGRUB: Node app is running on port', app.get('port'));
+
 });
