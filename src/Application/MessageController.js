@@ -5,8 +5,6 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 
-var MuxService = require('../src/MuxService');
-
 function MessageController() {
 }
 
