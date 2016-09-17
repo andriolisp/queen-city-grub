@@ -91,6 +91,9 @@ RestaurantsService.find = function (request) {
         // Add the top three restaurants to the request
         request.restaurants = restaurants.slice(0, 3)
 
+        // We are done looking for restaurants
+        request.isDone = true
+
         // Resolve the request
         resolve(request)
       })

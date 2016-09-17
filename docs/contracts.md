@@ -115,6 +115,7 @@ If neither address or neighborhood is known, the defaultLocation will be used as
     "website" : "http://...",
     "googleUrl" : "http://...",
     "location" : ["lat","lng"]
-  }]
+  }],
+  "isDone" : true
 }
 ```
