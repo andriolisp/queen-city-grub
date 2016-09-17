@@ -1,11 +1,8 @@
 var cache = require('memory-cache');
+var rand = require('random-seed').create();
 var montecarloService = require('../../src/MontecarloService');
 var searchService = require('../../src/SearchService');
 var _ = require('lodash');
-
-var randomIntInc = function(low, high) {
-    return Math.floor(Math.random() * (high - low + 1) + low);
-}
 
 var replaceAll = function(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -18,21 +15,17 @@ var ProberService = {
     var maybePrefix = ["Hmm... ", "Well... ", "Life goes on... ", "Being difficult, hah? "];
     var phrases = ["Do you like %suggestion%?", "Would you like to have %suggestion%?", "Does %suggestion% sounds good?", "Are you a %suggestion% person?", "Would you like %suggestion% or %suggestion%?"];
     var message = '';
-    var randomNumber = 0
     if(oldSuggestion && oldSuggestion.length > 0) {
       var response = isNaN(answer) ? 0 : parseInt(answer);
       switch(response) {
         case 0:
-          randomNumber = randomIntInc(0, noPrefix.length - 1);
-          message = noPrefix[randomNumber];
+          message = noPrefix[rand.intBetween(0, noPrefix.length - 1)];
           break;
         case 1:
-          randomNumber = randomIntInc(0, maybePrefix.length - 1);
-          message = maybePrefix[randomNumber];
+          message = maybePrefix[rand.intBetween(0, maybePrefix.length - 1)];
           break;
         case 2:
-          randomNumber = randomIntInc(0, yesPrefix.length - 1);
-          message = yesPrefix[randomNumber];
+          message = yesPrefix[rand.intBetween(0, yesPrefix.length - 1)];
           break
       }
 
@@ -40,8 +33,7 @@ var ProberService = {
       message = replaceAll(message, "%suggestion%", suggestion);
     }
 
-    var randomNumber = randomIntInc(0, phrases.length - 1);
-    message += phrases[randomNumber];
+    message += phrases[rand.intBetween(0, phrases.length - 1)];
 
     message = replaceAll(message, "%oldSuggestion%", oldSuggestion);
     message = replaceAll(message, "%suggestion%", suggestion);
