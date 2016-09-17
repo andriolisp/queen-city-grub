@@ -85,7 +85,7 @@ Classifier.classify = function (request) {
     request.classifier = {
       'highEnd': getValue(message, adjectives) != null || intentValue === 'highend',
       'recommend': isRecommend,
-      'food': foundFood,
+      'foodType': foundFood,
       'location': getValue(message, neighborhoods),
       'monteCarlo': null
     }
