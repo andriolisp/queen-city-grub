@@ -15,8 +15,6 @@ var buildMessageReply = function (sender, token, message) {
 
 function buildQuckReply(sender, token, obj) {
     
-    console.log("quickReply obj = "+obj);
-    
     var quickReplies = [
         {
             "content_type":"text",
@@ -98,7 +96,6 @@ MessageController.messageLookup = function (sender, text, token, req, res, recip
   
     switch(newtext){
         case "startbot":
-            console.log("MESSAGE_CONTROLLER QueenCityGrub checkOneWord startbot ... ");
             ReplyController.sendMessage(sender, token, "This should work MESSAGE...");
             break;
 

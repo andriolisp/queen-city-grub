@@ -93,41 +93,28 @@ app.post('/messengerwebhook/', function (req, res) {
     var recipient = 0;
         
     for (i = 0; i < messaging_events.length; i++) {
-        //console.log(‘INDEX messengerwebhook INSIDE FOR LOOP …’);
-        event = req.body.entry[0].messaging[i]
-        console.log('QUEENCITYGRUB: INDEX messengerwebhook event = '+event);
-        console.log('QUEENCITYGRUB: INDEX JSON.stringify event = '+JSON.stringify(event));
-        //console.log('QUEENCITYGRUB: INDEX JSON.stringify event.message = '+JSON.stringify(event.message));
-        console.log('QUEENCITYGRUB: INDEX JSON.stringify I = '+i);
 
-        sender = event.sender.id;
-        recipient = event.recipient.id;
-        console.log('QUEENCITYGRUB: INDEX messengerwebhook sender ID = '+sender);
-        console.log('QUEENCITYGRUB: INDEX messengerwebhook event.recipient.id = '+event.recipient.id);
-        console.log('QUEENCITYGRUB: INDEX messengerwebhook recipient = '+recipient);
-
+        console.log(req.body.entry[0].messaging[i]);
          
         if (event.message && event.message.quick_reply) {
-        // event.message.quick_reply handels all messages for the quick reply feature
-        //     text = event.message.text
-             console.log('QUEENCITYGRUB: INDEX messengerwebhook QUICK_REPLY event.message.quick_reply.payload = '+event.message.quick_reply.payload);
-            
+            console.log("Quick Reply");
+
             QuickReplyController.handle(sender, event.message.quick_reply.payload, token, req, res);
              continue
          }
         if (event.message && event.message.text) {
+            console.log("Message Reply");
             
             text = event.message.text
             var newtext = text.toLowerCase();
-            console.log('QUEENCITYGRUB: INDEX messengerwebhook message.text... = '+text);
-           // req.session.eventpath = '/message';
+            
             MessageController.messageLookup(sender, newtext, token, req, res, recipient);
             continue
             
         }
         if (event.postback) {
+            console.log("Postback Reply");
             
-            console.log('QUEENCITYGRUB: INDEX messengerwebhook event.postback.payload = '+event.postback.payload);
             var newtext = event.postback.payload.toLowerCase();
             PostbackController.handle(sender, newtext, token, req, res);
             
@@ -140,5 +127,4 @@ app.post('/messengerwebhook/', function (req, res) {
 
 app.listen(app.get('port'), function() {
   console.log('QUEENCITYGRUB: Node app is running on port', app.get('port'));
-
 });

@@ -24,10 +24,7 @@ ReplyController.sendGeneric = function (sender, token, genericMessage) {
 
 ReplyController.sendMessage = function (sender, token, message) {
     
-    console.log("RESPONSE_CONTROLLER QueenCityGrub sendTextMessageMessage sender = "+sender);
-    console.log("RESPONSE_CONTROLLER QueenCityGrub sendTextMessageMessage token = "+token);
-    console.log("RESPONSE_CONTROLLER QueenCityGrub sendTextMessageMessage message = "+message);
-    
+
     request({
         url: 'https://graph.facebook.com/v2.7/me/messages',
         qs: {access_token: token},
@@ -50,8 +47,7 @@ ReplyController.sendMessage = function (sender, token, message) {
 
 ReplyController.sendReceived = function (sender, token) {
     
-    console.log("MESSAGE_CONTROLLER: QueenCityGrub sendReceived ...");
-    
+
     request({
         url: "https://graph.facebook.com/v2.7/me/messages",
         qs: {access_token:token},
@@ -72,9 +68,7 @@ ReplyController.sendReceived = function (sender, token) {
 
 ReplyController.sendQuickReplies = function (sender, token, question, quickReplies) {
     
-    console.log("quickReply question = "+question);
-    console.log("quickReply quickReplies = "+quickReplies);
-        
+    
     request({
         url: 'https://graph.facebook.com/v2.7/me/messages',
         qs: {access_token:token},

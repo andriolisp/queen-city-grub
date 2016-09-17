@@ -30,8 +30,6 @@ var buildMessageReply = function (sender, token, message) {
 
 function buildQuckReply(sender, token, obj) {
     
-    console.log("quickReply obj = "+obj);
-    
     var quickReplies = [
         {
             "content_type":"text",
@@ -107,7 +105,6 @@ function buildCaroselReply(sender, token, res){
 PostbackController.handle = function(sender, text, token, req, res) {
 
     var newtext = text.toLowerCase();
-    console.log("POSTBACK_CONTROLLER postbackLookup newtext = "+newtext);
 
     // Let facebook know it was received
     ReplyController.sendReceived(sender, token);
