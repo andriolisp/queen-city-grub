@@ -59,7 +59,7 @@ var ProberService = {
         var isDone = mcUserService.GetResult()
         if (isDone) {
           request.question = null
-          _.set(request, 'entities.foodType', mcUserService.GetFinalSuggestion())
+          _.set(request, 'entities.foodType', mcUserService.GetFinalSuggestion() + " food")
           searchService.find(request).then(resolve)
         } else {
           request.question = question
