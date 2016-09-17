@@ -5,7 +5,6 @@ var SearchService = {}
 
 SearchService.find = function (request) {
   return new Promise(function (resolve) {
-    console.log(request)
     // Call location service to get a latitude and longitude
     LocationService.find(request).then(function (request) {
       // Get the restaurants suggestions
