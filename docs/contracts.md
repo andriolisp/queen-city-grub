@@ -5,7 +5,7 @@ This piece will take a sentence and return json object with basic information
 about what they want. 
 
 message == the actual message
-highend == true when they specifiy that they want some want highend place
+highEnd == true when they specifiy that they want some want highend place
 recommend == true if they'd like to be recommended a place instead
 food == will have a specific food type they might have asked for
 location == location if a location was found in the message 
@@ -20,10 +20,10 @@ location == location if a location was found in the message
 ```
 {
 	"message": "I'm looking for mexican food in south end",
-	"highend": false,
+	"highEnd": false,
   "recommend": false,
   "food": "mexican food",
-  "location": "south end"
+  "location": "south end",
 }
 
 ## Request
@@ -36,7 +36,7 @@ location == location if a location was found in the message
 ```
 {
 	"message": "Would you recommend a place to eat",
-	"highend": false,
+	"highEnd": false,
   "recommend": true,
   "food": null
   "location": null,
