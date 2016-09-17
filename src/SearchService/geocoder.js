@@ -50,7 +50,7 @@ function GeoPlace (res) {
 GeoPlace.prototype._normalizeAddressComponents = function (res) {
   var components = {}
   res.address_components.forEach(function (item) {
-    components[ item.types[0]] = {
+    components[item.types[0]] = {
       long_name: item.long_name,
       short_name: item.short_name
     }
