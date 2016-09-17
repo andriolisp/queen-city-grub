@@ -1,8 +1,7 @@
 var request = require("request")
 var ValueObjectsController = require('./ValueObjectsController');
 var MessageController = require('./MessageController');
-var MuxController = require('../MuxController')
-
+var MuxController = require('./MuxController')
 var ReplyController = require('./ReplyController');
 
 function PostbackController() {
