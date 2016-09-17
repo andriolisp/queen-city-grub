@@ -4,11 +4,14 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 var request = require('request');
-var PostbackController = require('./PostbackController');
-var MessageController = require('./MessageController');
-var ValueObjectsController = require('./ValueObjectsController');
 
 var QuickReplyController = require('./QuickReplyController');
+var PostbackController = require('./PostbackController');
+
+var MessageController = require('./MessageController');
+
+var ValueObjectsController = require('./ValueObjectsController');
+
 
 var session = require('express-session');
 
@@ -23,10 +26,13 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
 app.use(express.static(__dirname + '/public'));
+
 // Process application/json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 //app.use(app.router);
 app.use(express.static(path.join(__dirname, 'code')));
 
