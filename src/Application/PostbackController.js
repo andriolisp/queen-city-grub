@@ -1,8 +1,7 @@
 var request = require("request")
 var ValueObjectsController = require('./ValueObjectsController');
 var MessageController = require('./MessageController');
-var MuxService = require('../MuxService')
-
+var MuxController = require('./MuxController')
 var ReplyController = require('./ReplyController');
 
 function PostbackController() {
@@ -10,7 +9,7 @@ function PostbackController() {
 
 
 var buildMonteCarloReply = function (sender, token, response) {
-    MuxService.handleMonteCarloRequest(sender, response).then(function (res){
+    MuxController.handleMonteCarloRequest(sender, response).then(function (res){
         if (res.isDone){
             buildCaroselReply(sender, token, res)
         } else {
@@ -20,7 +19,7 @@ var buildMonteCarloReply = function (sender, token, response) {
 }
 
 var buildMessageReply = function (sender, token, message) {
-    MuxService.handleMessageRequest(sender, message).then(function (res) {
+    MuxController.handleMessageRequest(sender, message).then(function (res) {
         if (res.isDone){
             buildCaroselReply(sender, token, res)
         } else {
