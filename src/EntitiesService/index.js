@@ -8,11 +8,22 @@ var isNotEmpty = function (value) {
 var EntitiesService = {}
 
 EntitiesService.tag = function (request) {
-  return new Promise((resolve, reject) => {
-    Tagger.tag(this.clean(request.message)).then((results) => {
-      resolve(_.set(request, 'entities', results))
-    })
+  // return new Promise((resolve, reject) => {
+  //   Tagger.tag(this.clean(request.message)).then((results) => {
+  //     resolve(_.set(request, 'entities', results))
+  //   })
+  // })
+
+  _.set(request, 'entities', {
+    neighborhood: ['south end'],
+    address: [],
+    foodType: ['mexican'],
+    restauraunt: []
   })
+  var P = new Promise(function (resolve, reject) {
+    resolve(request)
+  })
+  return P
 }
 
 EntitiesService.clean = function (text) {
