@@ -39,7 +39,3 @@ EntitiesService.clean = function(text) {
 }
 
 module.exports = EntitiesService
-
-EntitiesService.tag('hello').then(function (model) {
-  console.log(model)
-})

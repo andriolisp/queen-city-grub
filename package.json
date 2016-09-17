@@ -32,7 +32,10 @@
     "google-places": "0.0.2",
     "install": "^0.8.1",
     "lodash": "^4.15.0",
+    "memory-cache": "^0.1.6",
     "natural": "^0.4.0",
-    "npm": "^3.10.7"
+    "npm": "^3.10.7",
+    "superagent": "^2.2.0",
+    "underscore": "^1.8.3"
   }
 }
