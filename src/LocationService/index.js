@@ -42,13 +42,9 @@ LocationService.find = function (locationRequest) {
             "components" : components.join("|")
         }, function (err, res) {
 
-            // Log the GeoCoder response
-            console.log("Google GeoCoder Response", res);
-
             if (err) {
 
                 // If there's an error, resolve with null
-                console.log(err);
                 resolve(null);
                 return;
 

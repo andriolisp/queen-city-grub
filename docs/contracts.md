@@ -161,12 +161,12 @@ restaurantsPromise.then(function (restaurants) {
 
 ## Search Service
 
-This piece will handle fetching the location if it isn't provided, and return the array of restaurant suggestions
+This piece will handle fetching the location if it isn't provided, and return the array of restaurant suggestions.
+If neither address or neighborhood is known, user location will be used
 
 ### Request
 ```
 {
-  "location" : null,
   "userLocation" : ["lat","lng"],
   "address" : "...",
   "neighborhood" : "...",
