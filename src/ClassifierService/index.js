@@ -24,7 +24,7 @@ for (var key in foodObject) {
 Classifier.train = function () {
   var intentClassifier = new natural.BayesClassifier()
   intentClassifier.addDocument(food, 'food')
-  intentClassifier.addDocument(neighborhoods, 'location')
+  intentClassifier.addDocument(neighborhoods, 'neighborhood')
   // adding recommend verbs to the classifier
   intentClassifier.addDocument(recommend, 'recommend')
   intentClassifier.addDocument(adjectives, 'highend')
@@ -45,7 +45,7 @@ Classifier.classify = function (request) {
     var intent = intentClassifier.getClassifications(message)
     var intentValue = intentClassifier.classify(message)
     var recommendValue = 0
-    var locationValue = 0
+    var neighborhoodValue = 0
     var foodValue = 0
     var highendValue = 0
     var isRecommend = false
@@ -54,8 +54,8 @@ Classifier.classify = function (request) {
       if (intent[key]['label'] === 'recommend') {
         recommendValue = intent[key]['value']
       }
-      if (intent[key]['label'] === 'location') {
-        locationValue = intent[key]['value']
+      if (intent[key]['label'] === 'neighborhood') {
+        neighborhoodValue = intent[key]['value']
       }
       if (intent[key]['label'] === 'food') {
         foodValue = intent[key]['value']
@@ -66,7 +66,7 @@ Classifier.classify = function (request) {
     }
     // recommend is true if the recommendValue is the higher than a certain threshold
     if ((recommendValue > 0.3 && intentValue === 'recommend') ||
-    recommendValue === locationValue && foodValue === highendValue) {
+    recommendValue === neighborhoodValue && foodValue === highendValue) {
       isRecommend = true
     }
     var foundFood = getValue(message, food)
@@ -86,8 +86,7 @@ Classifier.classify = function (request) {
       'highEnd': getValue(message, adjectives) != null || intentValue === 'highend',
       'recommend': isRecommend,
       'foodType': foundFood,
-      'location': getValue(message, neighborhoods),
-      'monteCarlo': null
+      'neighborhood': getValue(message, neighborhoods)
     }
     resolve(request)
   })

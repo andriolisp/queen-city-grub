@@ -9,7 +9,7 @@ message == the actual message
 highEnd == true when they specifiy that they want some want highend place
 recommend == true if they'd like to be recommended a place instead
 foodType == will have a specific food type they might have asked for
-location == location if a location was found in the message 
+neighborhood == location if a location was found in the message 
 
 ## Request
 ```
@@ -26,7 +26,7 @@ location == location if a location was found in the message
         "highEnd": false,
         "recommend": false,
         "foodType": "mexican food",
-        "location": "south end",
+        "neighborhood": "south end",
       }
 }
   

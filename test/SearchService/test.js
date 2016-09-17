@@ -4,7 +4,7 @@ var request = {
   'message': '...',
   'defaultLocation': ['35.2270869', '-80.8431267'],
   'entities': {
-    'foodType': 'pizza'
+    'foodType': ['pizza']
   }
 }
 
