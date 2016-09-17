@@ -31,7 +31,7 @@ LocationService.find = function (locationRequest) {
         } else {
 
             // If we don't have either, return no location object
-            locationPromise.resolve(null);
+            resolve(null);
             return;
 
         }
