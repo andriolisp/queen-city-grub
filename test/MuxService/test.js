@@ -5,8 +5,7 @@ var randomIntInc = function (low, high) {
 }
 
 var request = {
-  'message': 'I want some recommendation in south end',
-  'defaultLocation': ['35.2270869', '-80.8431267'],
+  'message': 'I would like some pizza in south end',
   'monteCarlo': false,
   'userId': randomIntInc(1, 1000)
 }
