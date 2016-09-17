@@ -4,7 +4,7 @@ var ReplyController = require('./ReplyController');
 var QuickReplyController = function () {};
 
 var buildMonteCarloReply = function (sender, token, response) {
-    MuxService.handleMonteCarloRequest(sender, response).then(function (res){
+    MuxController.handleMonteCarloRequest(sender, response).then(function (res){
         if (res.isDone){
             buildCaroselReply(sender, token, res)
         } else {
