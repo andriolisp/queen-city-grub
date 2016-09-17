@@ -93,6 +93,9 @@ MessageController.messageLookup = function (sender, text, token, req, res, recip
     var passThrough = "yes";
     var theData = null;
     var newtext = text.toLowerCase();
+    
+    // Let facebook know it was received
+    ReplyController.sendReceived(sender, token);
   
     switch(newtext){
         case "startbot":

@@ -91,6 +91,9 @@ QuickReplyController.handle = function(sender, text, token, req, res) {
     var textToReturn = "";
     
     var newtext = text.toLowerCase();
+    
+    // Let facebook know it was received
+    ReplyController.sendReceived(sender, token);
 
     switch(newtext) {
 
