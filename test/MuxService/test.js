@@ -9,30 +9,31 @@ var request = {
   'monteCarlo': false,
   'userId': randomIntInc(1, 1000)
 }
-muxService.handleRequest(request).then(function (response) {
-  if (response.monteCarlo) {
-    validateQuestion(response)
-  } else {
-    console.log(response)
-  }
-})
+muxService.handleRequest(request).then(console.log)
+// muxService.handleRequest(request).then(function (response) {
+//   if (response.monteCarlo) {
+//     validateQuestion(response)
+//   } else {
+//     console.log(response)
+//   }
+// })
 
-var validateQuestion = function (p) {
-  if (p.question) {
-    console.log(p.question)
-  }
-  if (!p.isDone) {
-    request = p
-    request.response = randomIntInc(0, 2)
-    muxService.handleRequest(request).then(function (response) {
-      if (response.monteCarlo) {
-        validateQuestion(response)
-      } else {
-        console.log(response)
-      }
-    })
-  } else {
-    console.log('Result')
-    console.log(p)
-  }
-}
+// var validateQuestion = function (p) {
+//   if (p.question) {
+//     console.log(p.question)
+//   }
+//   if (!p.isDone) {
+//     request = p
+//     request.response = randomIntInc(0, 2)
+//     muxService.handleRequest(request).then(function (response) {
+//       if (response.monteCarlo) {
+//         validateQuestion(response)
+//       } else {
+//         console.log(response)
+//       }
+//     })
+//   } else {
+//     console.log('Result')
+//     console.log(p)
+//   }
+// }
