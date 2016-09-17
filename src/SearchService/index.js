@@ -3,11 +3,6 @@ var RestaurantsService = require('../RestaurantsService');
 
 var SearchService = {};
 
-var getRestaurants = function (restaurantsRequest, resolve) {
-
-
-};
-
 SearchService.find = function (searchRequest) {
 
   return new Promise(function (resolve) {
