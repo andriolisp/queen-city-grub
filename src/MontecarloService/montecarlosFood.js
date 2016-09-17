@@ -59,7 +59,9 @@ function setAnswer(o, keyword, answer) {
       o.productData = null;
     }
 
-    o.total++;
+    if (answer === 1 || answer == 2) {
+      o.total++;
+    }
   }
 
   return o;
@@ -200,7 +202,7 @@ function getWords(categories) {
   return index;
 }
 
-/*
+
 var suggestion = setAnswer(null, "", 0);
 var questionUser = function (suggestion) {
   rl.question('Do you like ' + suggestion.suggestion + '? :', function (answer, callback) {
@@ -218,5 +220,5 @@ var questionUser = function (suggestion) {
   });
 }
 questionUser(suggestion);
-*/
 
+module.exports = setAnswer;
