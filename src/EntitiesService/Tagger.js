@@ -3,7 +3,7 @@ var path = require('path')
 
 var pythonPath = '/usr/bin/python'
 var taggerPath = path.join(__dirname, '../python/tagger/run.py')
-var modelPath = path.join(__dirname, '../python/tagger/models/english/')
+var modelPath = path.join(__dirname, '../python/tagger/models/food/')
 
 var wainting = Promise.resolve(true)
 
@@ -12,6 +12,7 @@ var Tagger = {
 }
 
 Tagger.init = function () {
+  console.log('init')
   return new Promise((resolve, reject) => {
     this.proc = spawn(pythonPath, ['-u', taggerPath, '--model', modelPath])
 
@@ -20,6 +21,8 @@ Tagger.init = function () {
         this.proc.stdout.pause()
         this.proc.stdout.removeAllListeners()
         resolve()
+      } else {
+        console.log(data.toString())
       }
     })
   })
@@ -33,7 +36,7 @@ Tagger.tag = function (sentence) {
       this.proc.stdout.on('data', (data) => {
         this.proc.stdout.pause()
         this.proc.stdout.removeAllListeners()
-        resolve(data.toString())
+        resolve(this.ProcessResults(data.toString()))
       })
       this.proc.stdout.resume()
       this.proc.stdin.write(sentence + '\n')
@@ -44,20 +47,37 @@ Tagger.tag = function (sentence) {
   return p
 }
 
-Tagger.init().then(function (value) {
-  console.log('ready')
-  Tagger.tag('The Chess Olympiad concludes with the United States winning the open event and China the womens event.').then((tags) => {
-    console.log(tags)
+Tagger.ProcessResults = function (results) {
+  var words = results.split('\n')
+
+  var obj = {
+    neighborhood: [],
+    address: [],
+    foodType: [],
+    restauraunt: []
+  }
+
+  words.forEach((word) => {
+    var parts = word.split(' ')
+
+    if (!parts || !parts[1] || parts[1] === 'O') {
+      return false
+    }
+
+    var tag = parts[1].split('-')[1]
+
+    switch (tag) {
+      case 'NAT':
+      case 'FT':
+        obj.foodType.push(parts[0])
+        break
+      case 'NBH':
+        obj.neighborhood.push(parts[0].trim())
+        break
+    }
   })
-  Tagger.tag('Mass protests across Hungary erupted after Prime Minister Ferenc Gyurcsanys private speech was leaked to the public, in which he admitted that the Hungarian Socialist Party had lied to win the 2006 election.').then((tags) => {
-    console.log(tags)
-  })
-  Tagger.tag('The Chess Olympiad concludes with the United States winning the open event and China the womens event.').then((tags) => {
-    console.log(tags)
-  })
-  Tagger.tag('The Chess concludes with the United States winning the open event and China the womens event.').then((tags) => {
-    console.log(tags)
-  })
-})
+
+  return obj
+}
 
 module.exports = Tagger
