@@ -34,55 +34,62 @@ Classifier.train = function () {
 }
 // given a message, classify it depending on some key values
 Classifier.classify = function (request) {
-  var message = request['message']
-  var intentClassifier = Classifier.train()
-  var intent = intentClassifier.getClassifications(message)
-  var intentValue = intentClassifier.classify(message)
-  var recommendValue = 0
-  var locationValue = 0
-  var foodValue = 0
-  var highendValue = 0
-  var isRecommend = false
-  // get our results
-  for (var key in intent) {
-    if (intent[key]['label'] === 'recommend') {
-      recommendValue = intent[key]['value']
+  return new Promise(function (resolve, reject) {
+    var message = request['message']
+    // if we have no message, return
+    if (message == null) {
+      resolve(request)
+      return
     }
-    if (intent[key]['label'] === 'location') {
-      locationValue = intent[key]['value']
+    var intentClassifier = Classifier.train()
+    var intent = intentClassifier.getClassifications(message)
+    var intentValue = intentClassifier.classify(message)
+    var recommendValue = 0
+    var locationValue = 0
+    var foodValue = 0
+    var highendValue = 0
+    var isRecommend = false
+    // get our results
+    for (var key in intent) {
+      if (intent[key]['label'] === 'recommend') {
+        recommendValue = intent[key]['value']
+      }
+      if (intent[key]['label'] === 'location') {
+        locationValue = intent[key]['value']
+      }
+      if (intent[key]['label'] === 'food') {
+        foodValue = intent[key]['value']
+      }
+      if (intent[key]['label'] === 'highend') {
+        highendValue = intent[key]['value']
+      }
     }
-    if (intent[key]['label'] === 'food') {
-      foodValue = intent[key]['value']
+    // recommend is true if the recommendValue is the higher than a certain threshold
+    if ((recommendValue > 0.3 && intentValue === 'recommend') ||
+    recommendValue === locationValue && foodValue === highendValue) {
+      isRecommend = true
     }
-    if (intent[key]['label'] === 'highend') {
-      highendValue = intent[key]['value']
-    }
-  }
-  // recommend is true if the recommendValue is the higher than a certain threshold
-  if ((recommendValue > 0.3 && intentValue === 'recommend') ||
-  recommendValue === locationValue && foodValue === highendValue) {
-    isRecommend = true
-  }
-  var foundFood = getValue(message, food)
+    var foundFood = getValue(message, food)
 
-  if (foundFood == null) {
-    var foodType = getValue(message, nationalities)
-    if (foodType != null) {
-      foundFood = foodType + ' food'
+    if (foundFood == null) {
+      var foodType = getValue(message, nationalities)
+      if (foodType != null) {
+        foundFood = foodType + ' food'
+      }
     }
-  }
 
-  if (foundFood != null) {
-    isRecommend = false
-  }
-  return _.merge(request, {
-    'classifier': {
+    if (foundFood != null) {
+      isRecommend = false
+    }
+
+    request.classifier = {
       'highEnd': getValue(message, adjectives) != null || intentValue === 'highend',
       'recommend': isRecommend,
       'food': foundFood,
       'location': getValue(message, neighborhoods),
       'monteCarlo': null
     }
+    resolve(request)
   })
 }
 
