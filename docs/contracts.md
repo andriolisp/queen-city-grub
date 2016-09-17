@@ -113,7 +113,8 @@ If neither address or neighborhood is known, the defaultLocation will be used as
     "name" : "...",
     "rating" : 4.1,
     "website" : "http://...",
-    "googleUrl" : "http://..."
+    "googleUrl" : "http://...",
+    "location" : ["lat","lng"]
   }]
 }
 ```

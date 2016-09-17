@@ -41,10 +41,11 @@ function getDetails (api, placeId) {
         return
       } else {
         resolve({
-          'name': res.result.name,
-          'rating': res.result.rating,
-          'website': res.result.website || null,
-          'googleUrl': res.result.url || null
+          'name': _.get(res, 'result.name'),
+          'rating': _.get(res, 'result.rating'),
+          'website': _.get(res, 'result.website', null),
+          'googleUrl': _.get(res, 'result.url', null),
+          'location': _.get(res, 'result.geometry.location')
         })
       }
     })
