@@ -54,6 +54,7 @@ var ProberService = {
           var oldSuggestion = mcUserService.GetSuggestion()
           mcUserService.Reply(response)
           question = ProberService.getQuestion(oldSuggestion, mcUserService.GetSuggestion(), response)
+          cache.delete(request.userId);
         }
 
         var isDone = mcUserService.GetResult()

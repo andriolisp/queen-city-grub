@@ -1,5 +1,12 @@
 var proberService = require('../../src/ProberService')
 
+var readline = require('readline');
+
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 var randomIntInc = function (low, high) {
   return Math.floor(Math.random() * (high - low + 1) + low)
 }
@@ -15,16 +22,14 @@ var params = {
 params.userId = randomIntInc(1, 1000)
 
 var validateQuestion = function (p) {
-  if (params.question) {
-    console.log(params.question)
-  }
-  if (!p.isDone) {
-    params = p
-    params.response = randomIntInc(0, 2)
-    proberService.getUserSuggestions(params).then(validateQuestion)
+  if (p.question !== '') {
+    rl.question(param.question, (answer) => {
+      params.response = answer;
+      rl.close();
+      proberService.getUserSuggestions(params).then(validateQuestion)
+    });
   } else {
-    console.log('Result')
-    console.log(p)
+    console.log(p);  
   }
 }
 
