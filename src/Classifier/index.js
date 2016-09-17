@@ -90,7 +90,7 @@ function getValue (message, data) {
   var val = null
   data.forEach(function (el, id, arr) {
     if (message.indexOf(el.toLowerCase()) !== -1) {
-      val = el
+      val = el.toLowerCase()
       return false
     }
   })
