@@ -6,19 +6,17 @@ var isNotEmpty = function (value){
 
 var EntitiesService = {}
 
-EntitiesService.tag = function (message) {
-  var model = {
-    message: message,
-    entities: {
-      neighborhood: ['south end'],
-      address: [],
-      foodType: ['mexican'],
-      restauraunt: []
-    }
-  }
+EntitiesService.tag = function (request) {
+
+  _.set(request, 'entities', {
+    neighborhood: ['south end'],
+    address: [],
+    foodType: ['mexican'],
+    restauraunt: []
+  })
 
   var P = new Promise(function (resolve, reject) {
-    resolve(model)
+    resolve(request)
   })
 
   return P
