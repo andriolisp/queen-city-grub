@@ -5,8 +5,7 @@ This piece will take a sentence and return json object with basic information
 about what they want. 
 
 message == the actual message
-cheap == true when they specifiy that they want some want cheap places
-highrated == true if they want high rated places
+highend == true when they specifiy that they want some want highend place
 recommend == true if they'd like to be recommended a place instead
 food == will have a specific food type they might have asked for
 location == location if a location was found in the message 
@@ -21,8 +20,7 @@ location == location if a location was found in the message
 ```
 {
 	"message": "I'm looking for mexican food in south end",
-	"cheap": false,
-  "highrated": true
+	"highend": false,
   "recommend": false,
   "food": "mexican food",
   "location": "south end"
@@ -38,8 +36,7 @@ location == location if a location was found in the message
 ```
 {
 	"message": "Would you recommend a place to eat",
-	"cheap": false,
-  "specific": false,
+	"highend": false,
   "recommend": true,
   "food": null
   "location": null,
@@ -113,7 +110,9 @@ locationPromise.then(function (location) {
 })
 ```
 
-## Restaurants Search
+### Request
+
+## Restaurants Service
 
 This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) and return up to three restaurants, sorted by rating
 
@@ -159,3 +158,22 @@ restaurantsPromise.then(function (restaurants) {
   ...
 })
 ```
+
+## Search Service
+
+This piece will handle fetching the location if it isn't provided, and return the array of restaurant suggestions.
+If neither address or neighborhood is known, user location will be used
+
+### Request
+```
+{
+  "userLocation" : ["lat","lng"],
+  "address" : "...",
+  "neighborhood" : "...",
+  "foodType" : "...",
+  "pricing" : 2
+}
+```
+
+### Response
+See Restaurants Service Response

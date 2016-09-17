@@ -31,7 +31,7 @@ LocationService.find = function (locationRequest) {
         } else {
 
             // If we don't have either, return no location object
-            locationPromise.resolve(null);
+            resolve(null);
             return;
 
         }
@@ -42,13 +42,9 @@ LocationService.find = function (locationRequest) {
             "components" : components.join("|")
         }, function (err, res) {
 
-            // Log the GeoCoder response
-            console.log("Google GeoCoder Response", res);
-
             if (err) {
 
                 // If there's an error, resolve with null
-                console.log(err);
                 resolve(null);
                 return;
 
