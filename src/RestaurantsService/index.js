@@ -74,7 +74,7 @@ function getDetails(api, placeId){
 /**
  * Return a set of restraunts
  */
-RestaurantsService.find = function (searchRequest) {
+RestaurantsService.find = function (restaurantsRequest) {
 
   return new Promise(function (resolve, reject) {
     
@@ -85,10 +85,10 @@ RestaurantsService.find = function (searchRequest) {
     var searchCriteria = {
       "radius" : 11265.4, // Look within 10 mile radius of location?
       "type" : "restaurant", // We only want restaurants
-      "keyword" : searchRequest.foodType,
-      "location" : searchRequest.location,
-      "minprice" : 0,
-      "maxprice" : searchRequest.pricing
+      "keyword" : restaurantsRequest.foodType,
+      "location" : restaurantsRequest.location,
+      "maxprice" : restaurantsRequest.pricing,
+      "minprice" : 0
     };
 
     // Get the places given search criteria

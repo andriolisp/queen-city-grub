@@ -113,7 +113,9 @@ locationPromise.then(function (location) {
 })
 ```
 
-## Restaurants Search
+### Request
+
+## Restaurants Service
 
 This piece will take a location, food type and pricing range (0, 1, 2, 3 or 4) and return up to three restaurants, sorted by rating
 
@@ -159,3 +161,22 @@ restaurantsPromise.then(function (restaurants) {
   ...
 })
 ```
+
+## Search Service
+
+This piece will handle fetching the location if it isn't provided, and return the array of restaurant suggestions
+
+### Request
+```
+{
+  "location" : null,
+  "userLocation" : ["lat","lng"],
+  "address" : "...",
+  "neighborhood" : "...",
+  "foodType" : "...",
+  "pricing" : 2
+}
+```
+
+### Response
+See Restaurants Service Response
