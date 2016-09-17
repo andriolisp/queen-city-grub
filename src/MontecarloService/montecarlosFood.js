@@ -59,7 +59,9 @@ function setAnswer(o, keyword, answer) {
       o.productData = null;
     }
 
-    o.total++;
+    if (answer === 1 || answer == 2) {
+      o.total++;
+    }
   }
 
   return o;
@@ -220,3 +222,4 @@ var questionUser = function (suggestion) {
 questionUser(suggestion);
 */
 
+module.exports = setAnswer;
