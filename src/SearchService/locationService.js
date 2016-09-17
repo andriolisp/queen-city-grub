@@ -5,9 +5,9 @@ var LocationService = {};
 /**
  * Returns a location object
  */
-LocationService.find = function (locationRequest) {
+LocationService.find = function (request) {
 
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
 
         // Create a new instance of the Google GeoCoder API
         var api = new GoogleGeoCoderAPI("AIzaSyCBrJsgcagD8FeGh1Pe-NLW56fdItkVAA4");
@@ -18,20 +18,20 @@ LocationService.find = function (locationRequest) {
         // An address to match on
         var address = null;
 
-        if (locationRequest.address != null) {
+        if ("address" in request.entities && _.count(request.entities.address) > 0) {
 
             // Prefer an address if it is given
-            address = locationRequest.address;
+            address = request.entities.address[0];
 
-        } else if (locationRequest.neighborhood != null) {
+        } else if ("neighborhood" in request.entities && _.count(request.entities.neighborhood) > 0) {
 
             // Use a neighborhood component if no address is available
-            components.push("neighborhood:"+locationRequest.neighborhood);
+            components.push("neighborhood:"+request.entities.neighborhood[0]);
 
         } else {
 
-            // If we don't have either, return no location object
-            resolve(null);
+            // If we don't have either, resolve the request
+            resolve(request);
             return;
 
         }
@@ -44,8 +44,8 @@ LocationService.find = function (locationRequest) {
 
             if (err) {
 
-                // If there's an error, resolve with null
-                resolve(null);
+                // If there's an error, resolve the request
+                resolve(request);
                 return;
 
             }
@@ -55,15 +55,13 @@ LocationService.find = function (locationRequest) {
 
             if (location) {
 
-              // Resolve with a latitude and longitude array
-              resolve([location.lat,location.lng]);
-
-            } else {
-
-              // Resolve with null
-              resolve(null);
+              // Set the latitude and longitude
+              request.location = [location.lat, location.lng];
 
             }
+
+            // Resolve the request
+            resolve(request);
 
         });
 

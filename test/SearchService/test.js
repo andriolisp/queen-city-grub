@@ -1,12 +1,14 @@
 var SearchService = require("../../src/SearchService")
 
-var searchRequest = {
-    "userLocation" : ["35.2270869","-80.8431267"],
-    "foodType" : "pizza",
-    "pricing" : 2
+var request = {
+    "message" : "...",
+    "defaultLocation" : ["35.2270869","-80.8431267"],
+    "entities" : {
+      "foodType" : "pizza"
+    }
 };
 
-var searchPromise = SearchService.find(searchRequest);
+var searchPromise = SearchService.find(request);
 
 searchPromise.then(function (restaurants) {
 

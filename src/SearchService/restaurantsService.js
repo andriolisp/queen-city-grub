@@ -18,18 +18,21 @@ var sortRestaurants = function (restaurant1, restaurant2) {
 
 };
 
-function getPlaces(api, searchCriteria, reject) {
+function getPlaces(api, searchCriteria) {
   
   return new Promise(function (resolve) {
 
     api.search(searchCriteria, function(err, res) {
 
-      if (err) {
-        reject(err);
-      } else if (res.status != "OK") {
-        reject(res.status);
+      if (err || res.status != "OK") {
+
+        // Resolve with no places
+        resolve([]);
+
       } else {
-        resolve(res)
+
+        // Resolve with the places
+        resolve(res.results)
       }
 
     });
@@ -74,9 +77,9 @@ function getDetails(api, placeId){
 /**
  * Return a set of restraunts
  */
-RestaurantsService.find = function (restaurantsRequest) {
+RestaurantsService.find = function (request) {
 
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve) {
     
     // Create a new instance of the Google Places API
     var api = new GooglePlacesAPI('AIzaSyDJxv_zb4nnlWEaOeVXZC5iXUQRKSKN5uI');
@@ -85,37 +88,43 @@ RestaurantsService.find = function (restaurantsRequest) {
     var searchCriteria = {
       "radius" : 11265.4, // Look within 10 mile radius of location?
       "type" : "restaurant", // We only want restaurants
-      "keyword" : restaurantsRequest.foodType,
-      "location" : restaurantsRequest.location,
-      "maxprice" : restaurantsRequest.pricing,
+      "keyword" : request.entities.foodType[0],
+      "location" : request.location || request.defaultLocation,
+      "maxprice" : 2,
       "minprice" : 0
     };
 
     // Get the places given search criteria
-    getPlaces(api, searchCriteria, reject).then(function (res){
+    getPlaces(api, searchCriteria).then(function (places) {
+
+      if (places.length == 0) {
+        // If there are no places, resolve the request
+        resolve(request);
+      }
 
       // Build an array of details promises
       var detailsPromises = [];
 
       // Go through each place
-      res.results.forEach(function (place) {
-        
+      places.forEach(function (place) {
         // Create an array of promises to get restaurant details
         detailsPromises.push(getDetails(api, place.place_id));
-
       });
 
       // Wait for all place details to be fetched
-      Promise.all(detailsPromises).then(function (restaurants) {
+      Promise.all(detailsPromises).then(function (placeDetails) {
 
         // Filter out the null values
-        var actualRestaurants = _.filter(restaurants, _.isObject);
+        var restaurants = _.filter(placeDetails, _.isObject);
 
         // Sort the restaurants
-        actualRestaurants.sort(sortRestaurants);
+        restaurants.sort(sortRestaurants);
 
-        // Resolve the top three results
-        resolve(actualRestaurants.slice(0, 3));
+        // Add the top three restaurants to the request
+        request.restaurants = restaurants.slice(0, 3);
+
+        // Resolve the request
+        resolve(request);
 
       });
 
