@@ -27,6 +27,10 @@ var buildQuickReply = function (sender, token, obj) {
 var buildCaroselReply = function (sender, token, res){
     
     var elements = [];
+
+    console.log("LOGIC RESPONSE");
+    console.log(res);
+    console.log("");
     
     res.restaurants.forEach(function (restaurant) {
        
@@ -53,7 +57,7 @@ var buildCaroselReply = function (sender, token, res){
         
     });
     
-    if (elements.count > 0) {
+    if (elements.length > 0) {
         
         var caroselData = {
              "attachment":{  
