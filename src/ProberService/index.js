@@ -54,13 +54,13 @@ var ProberService = {
           var oldSuggestion = mcUserService.GetSuggestion()
           mcUserService.Reply(response)
           question = ProberService.getQuestion(oldSuggestion, mcUserService.GetSuggestion(), response)
-          cache.del(request.userId);
         }
 
         var isDone = mcUserService.GetResult()
         if (isDone) {
           request.question = null
           _.set(request, 'entities.foodType', mcUserService.GetFinalSuggestion() + " food")
+          cache.del(request.userId);
           searchService.find(request).then(resolve)
         } else {
           request.question = question
