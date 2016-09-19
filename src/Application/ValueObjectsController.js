@@ -61,7 +61,7 @@ ValueObjectsController.getStarted = function() {
                     }]
                    }, {
                     "title": "Mexican",
-                    "subtitle": "Mild or Spicy, you will love it",
+                    "subtitle": "Mild or Spicy you will love it",
                     "image_url": "https://queen-city-grub.herokuapp.com/mexican.jpg",
                     "buttons": [{
                         "type": "postback",
@@ -94,7 +94,8 @@ ValueObjectsController.getStarted = function() {
                         "type": "postback",
                         "title": "Find Chinese Food",
                         "payload": "adminchinese"
-                    },  {
+                    }]
+                },  {
                     "title": "Indian",
                     "subtitle": "Samosas Sound Sweet",
                     "image_url": "https://queen-city-grub.herokuapp.com/indian.jpg",
