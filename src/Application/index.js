@@ -16,9 +16,7 @@ var ValueObjectsController = require('./ValueObjectsController');
 var session = require('express-session');
 
 var bodyParser = require('body-parser');
-var token = 'EAABqKqaNXWQBABt7nSSyGsJZBWPLZBWTePE7f0CeMglH34WAKewhGit11z9ZANoDZCb17vZClCx7KBkdkvZBgBOIrKluyS85DEXy0a5qIw3lqPgeZA3K1LxWgSZBtUlZAyz1NoxGLZA5tizYsj1O5qeFfm0EIo5W21IgAZD';
-
-
+var token = 'EAAXtudRZBgpEBABXXZBxjl71DverAPhM3nWbre6VLUop2585TWjMxtNk3oJv7eVSEPivB9I39Jtp7xHZAdccLZCQv9kLfV4ZAuL2ZBzGMlUxmelPKKnTCZCFZCi87SiFciEMa5M4k1GzEyg6V7jQPJhPasEMyVLnN82sOU02axCaSQZDZD';
 
 app.set('port', (process.env.PORT || 5000));
 app.use(function(req, res, next) {
