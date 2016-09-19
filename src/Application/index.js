@@ -83,6 +83,7 @@ app.get('/messengerwebhook/', function(req, res) {
 app.post('/messengerwebhook/', function (req, res) {
     //req.session.lastPage = '/messengerwebhook';
 
+    console.log("REQUEST BODY");
     console.log(JSON.stringify(req.body));
     console.log("");
     
