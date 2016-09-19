@@ -19,6 +19,7 @@ var bodyParser = require('body-parser');
 var token = 'EAAXtudRZBgpEBABXXZBxjl71DverAPhM3nWbre6VLUop2585TWjMxtNk3oJv7eVSEPivB9I39Jtp7xHZAdccLZCQv9kLfV4ZAuL2ZBzGMlUxmelPKKnTCZCFZCi87SiFciEMa5M4k1GzEyg6V7jQPJhPasEMyVLnN82sOU02axCaSQZDZD';
 
 app.set('port', (process.env.PORT || 5000));
+
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -60,7 +61,6 @@ app.get('/',function(req,res){
 //============================================
 app.get('/hello', function(req, res) {
     res.setHeader('Access-Control-Allow-Origin','*');
-    console.log('hello SUCCESS queencitygrub');
     res.send('INDEX Hello from Express Heroku  QUEENCITYGRUB'); 
 });
 
@@ -71,7 +71,6 @@ app.get('/hello', function(req, res) {
 //============================================
 // this allows Facebook verify that the API Webhook exists
 app.get('/messengerwebhook/', function(req, res) {
-    console.log('QUEENCITYGRUB: GET = messengerwebhook req = '+req);
     if (req.query['hub.verify_token'] === 'messenger_webhook_queencitygrub') {
         res.send(req.query['hub.challenge']);
     } else {
@@ -82,20 +81,16 @@ app.get('/messengerwebhook/', function(req, res) {
 //============================================
 // this is the hub where all messages come in and are handled and dispensed to the rest of the app 
 app.post('/messengerwebhook/', function (req, res) {
-  console.log('QUEENCITYGRUB: POST = messengerwebhook req = '+req);
     //req.session.lastPage = '/messengerwebhook';
 
-    console.log(req.body);
+    console.log(JSON.stringify(req.body));
     
     messaging_events = req.body.entry[0].messaging;
-    console.log('QUEENCITYGRUB: INDEX ========================================');
 
     var sender = 0;
     var recipient = 0;
         
     for (i = 0; i < messaging_events.length; i++) {
-
-        console.log(req.body.entry[0].messaging[i]);
 
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id;
@@ -103,8 +98,6 @@ app.post('/messengerwebhook/', function (req, res) {
 
          
         if (event.message && event.message.quick_reply && !event.message.is_echo) {
-             console.log('Quick Reply');
-            
             QuickReplyController.handle(sender, event.message.quick_reply.payload, token, req, res);
              continue
          }
@@ -112,15 +105,12 @@ app.post('/messengerwebhook/', function (req, res) {
             
             text = event.message.text
             var newtext = text.toLowerCase();
-            console.log('Message Reply');
-           // req.session.eventpath = '/message';
             MessageController.messageLookup(sender, newtext, token, req, res, recipient);
             continue
             
         }
         if (event.postback) {
             
-            console.log('Postback Reply');
             var newtext = event.postback.payload.toLowerCase();
             PostbackController.handle(sender, newtext, token, req, res);
             

@@ -37,7 +37,7 @@ ValueObjectsController.getStarted = function() {
                 "template_type": "generic",
                 "elements": [ {
                    "title": "Welcome to Queen City Grub",
-                    image_url: "https://queen-city-grub.herokuapp.com/welcome.jpg?dl=0" 
+                    image_url: "https://queen-city-grub.herokuapp.com/welcome.jpg" 
                 }]
             }
         }
@@ -53,47 +53,55 @@ ValueObjectsController.getStarted = function() {
                 "elements": [{
                     "title": "I don’t know",
                     "subtitle": "Surprise me…",
-                    "image_url": "https://queen-city-grub.herokuapp.com/imnotsure.jpg?dl=0",
+                    "image_url": "https://queen-city-grub.herokuapp.com/imnotsure.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Help me find it",
+                        "title": "Help Me",
                         "payload": "admindontknow"
                     }]
                    }, {
                     "title": "Mexican",
-                    "subtitle": "Mild or Spicy you will love it",
-                    "image_url": "https://queen-city-grub.herokuapp.com/mexican.jpg?dl=0",
+                    "subtitle": "Mild or Spicy, you will love it",
+                    "image_url": "https://queen-city-grub.herokuapp.com/mexican.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Get some",
+                        "title": "Find Mexican Food",
                         "payload": "adminmexican"
                     }]
                    },  {
                     "title": "Italian",
-                    "subtitle": "Mamma Mia that’s a spicy meatball",
-                    "image_url": "https://queen-city-grub.herokuapp.com/italian.jpg?dl=0",
+                    "subtitle": "Mamma Mia that's a spicy meatball",
+                    "image_url": "https://queen-city-grub.herokuapp.com/italian.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Get some",
+                        "title": "Find Italian Food",
                         "payload": "adminitalian"
                     }]
                    },  {
                     "title": "American",
-                    "subtitle": "Y-all get it while its hot",
-                    "image_url": "https://queen-city-grub.herokuapp.com/american.jpg?dl=0",
+                    "subtitle": "Get it while its hot",
+                    "image_url": "https://queen-city-grub.herokuapp.com/american.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Get some",
+                        "title": "Find American Food",
                         "payload": "adminamerican"
                     }]
                    },  {
                     "title": "Chinese",
                     "subtitle": "Fortune Cookie Time",
-                    "image_url": "https://queen-city-grub.herokuapp.com/chinese.jpg?dl=0",
+                    "image_url": "https://queen-city-grub.herokuapp.com/chinese.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Explore Sports",
+                        "title": "Find Chinese Food",
                         "payload": "adminchinese"
+                    },  {
+                    "title": "Indian",
+                    "subtitle": "Samosas Sound Sweet",
+                    "image_url": "https://queen-city-grub.herokuapp.com/indian.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Find Indian Food",
+                        "payload": "adminindian"
                     }]
                 }]
             }
