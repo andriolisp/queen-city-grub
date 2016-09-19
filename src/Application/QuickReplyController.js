@@ -27,13 +27,18 @@ var buildQuickReply = function (sender, token, obj) {
 
 var buildCaroselReply = function (sender, token, res){
     
-    var elements = [];
+    var colors = ["blue","green","red"];
+    var labels = ["A","B","C"];
 
+    var elements = [];
+    
     console.log("LOGIC RESPONSE");
     console.log(res);
     console.log("");
-    
-    res.restaurants.forEach(function (restaurant) {
+
+    var centerPoint = res.location || res.defaultLocation;
+
+    res.restaurants.forEach(function (restaurant, i) {
        
         var buttons = [{
             "type" : "web_url",
@@ -52,7 +57,7 @@ var buildCaroselReply = function (sender, token, res){
         elements.push({
             "title" : restaurant.name,
             "subtitle" : "Rating: "+ restaurant.rating,
-            "image_url" : "...",
+            "image_url" : "https://maps.googleapis.com/maps/api/staticmap?center="+centerPoint.join(",")+"&zoom=13&size=500x270&maptype=roadmap&markers=color:"+color[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
             "buttons" : buttons
         });
         
