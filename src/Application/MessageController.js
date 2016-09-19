@@ -107,30 +107,11 @@ var buildMessageReply = function (sender, token, message) {
 
 MessageController.messageLookup = function (sender, text, token, req, res, recipient) {
     
-    var textToReturn = "";
-    var passThrough = "yes";
-    var theData = null;
-    var newtext = text.toLowerCase();
-
     // Let facebook know it was received
     ReplyController.sendReceived(sender, token);
   
-    switch(newtext){
-        case "startbot":
-            ReplyController.sendMessage(sender, token, "This should work MESSAGE...");
-            break;
-
-        default:
-        
-            MuxController.handleMessageRequest(sender, text).then(function (response) {
-            // "question": ' .... ',
-            // "location": "[lat, long]", (package as array)
-            // "restaurants": "[JSON objects]", (package as array)
-            // "isDone": true or false  (always true for monte carlo otherwise false )
-            
-            });
-            
-    }
+    // Reply to the message
+    buildMessageReply(sender, token, text);
     
 }
 
