@@ -32,7 +32,7 @@ var buildCaroselReply = function (sender, token, res){
     var elements = [];
     
     console.log("LOGIC RESPONSE");
-    console.log(res);
+    console.log(JSON.stringify(res));
     console.log("");
 
     var centerPoint = res.location || res.defaultLocation;
