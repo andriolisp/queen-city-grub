@@ -137,14 +137,17 @@ PostbackController.handle = function(sender, text, token, req, res) {
             break;
 
         case "adminchinese":
-            buildMessageReply(sender, token, "I want Japanese or Chinese food")
+            buildMessageReply(sender, token, "I want Chinese food")
             break;
             
         case "adminfrench":
             buildMessageReply(sender, token, "I want French food")
             break;
+            
+        case "adminindian":
+            buildMessageReply(sender, token, "I want Indian food")
+            break;
 
-        case "startbot":
         case "adminmainmenu":
             var data = ValueObjectsController.getWelcomeScreenData();
             ReplyController.sendGeneric(sender, token, data);
