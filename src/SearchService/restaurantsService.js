@@ -37,12 +37,14 @@ function getDetails (api, placeId) {
         resolve(null)
         return
       } else {
+        var location = _.get(res, 'result.geometry.location');
+
         resolve({
           'name': _.get(res, 'result.name'),
           'rating': _.get(res, 'result.rating'),
           'website': _.get(res, 'result.website', null),
           'googleUrl': _.get(res, 'result.url', null),
-          'location': _.get(res, 'result.geometry.location')
+          'location': [location.lat, location.lng]
         })
       }
     })
