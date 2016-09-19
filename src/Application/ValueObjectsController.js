@@ -4,13 +4,11 @@ function ValueObjectsController() {
 
 //============================================
 ValueObjectsController.getWelcomeScreenData = function() {
-  console.log("VALUE_CONTROLLER: QueenCityGRUB getWelcomeScreenData start ");
   return welcomeScreenData;
 }
 
 //============================================
 ValueObjectsController.getWelcomeCarouselData = function() {
-  console.log("VALUE_CONTROLLER: QueenCityGRUB getWelcomeCarouselData start ");
   return welcomeCarouselData;
 }
 

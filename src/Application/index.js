@@ -84,6 +84,7 @@ app.post('/messengerwebhook/', function (req, res) {
     //req.session.lastPage = '/messengerwebhook';
 
     console.log(JSON.stringify(req.body));
+    console.log("");
     
     messaging_events = req.body.entry[0].messaging;
 

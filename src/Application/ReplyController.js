@@ -15,6 +15,7 @@ ReplyController.sendGeneric = function (sender, token, genericMessage) {
     };
 
     console.log(JSON.stringify(replyBody));
+    console.log("");
 
   request(replyBody, function(error, response, body) {
         if (error) {
@@ -41,6 +42,7 @@ ReplyController.sendMessage = function (sender, token, message) {
     };
 
     console.log(JSON.stringify(replyBody));
+    console.log("");
 
     request(replyBody, function(error, response, body) {
         if (error) {
@@ -65,6 +67,7 @@ ReplyController.sendReceived = function (sender, token) {
     };
 
     console.log(JSON.stringify(replyBody));
+    console.log("");
 
     request(replyBody, function(error, response, body) {
         if (error) {
