@@ -1,8 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var MessengerController = require('./Messengercontroller');
-
+var MessengerController = require('./MessengerController');
 
 var app = express();
 
