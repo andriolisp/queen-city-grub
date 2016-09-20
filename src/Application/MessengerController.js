@@ -7,7 +7,7 @@ var MessengerController = {};
 
 MuxController.setMessengerController(MessengerController);
 
-var sendToApi = function (replyBody) {
+var sendToApi = function (endpoint, replyBody) {
 
     return new Promise(function (resolve, reject) {
 
@@ -17,7 +17,7 @@ var sendToApi = function (replyBody) {
         console.log("");
 
         request({
-            'url': 'https://graph.facebook.com/v2.7/me/messages',
+            'url': 'https://graph.facebook.com/v2.7'+ endpoint,
             'qs': {
                 'access_token': 'EAAXtudRZBgpEBABXXZBxjl71DverAPhM3nWbre6VLUop2585TWjMxtNk3oJv7eVSEPivB9I39Jtp7xHZAdccLZCQv9kLfV4ZAuL2ZBzGMlUxmelPKKnTCZCFZCi87SiFciEMa5M4k1GzEyg6V7jQPJhPasEMyVLnN82sOU02axCaSQZDZD'
             },
@@ -37,14 +37,55 @@ var sendToApi = function (replyBody) {
 
 var sendTypingOn = function (recipientId) {
     
-    return sendToApi({
+    return sendToApi('/me/messages', {
         'sender_action': 'typing_on',
         'recipient': {
             'id': recipientId
         }
     });
     
-}
+};
+
+MessengerController.setGreeting = function (greeting) {
+
+    sendToApi('/me/thread_settings', {
+        'setting_type':'greeting',
+        'greeting':{
+            'text': greeting
+        }
+    });
+
+};
+
+MessengerController.setGetStartedPostback = function (payload) {
+
+    sendToApi('/me/thread_settings', {
+        'setting_type':'call_to_actions',
+        'thread_state':'new_thread',
+        'call_to_actions':[
+            {
+                'payload': payload
+            }
+        ]
+    });
+
+};
+
+MessengerController.setPersistentMenuPostbacks = function (payloads) {
+
+    sendToApi('/me/thread_settings', {
+        "setting_type" : "call_to_actions",
+        "thread_state" : "existing_thread",
+        "call_to_actions":_.map(payloads, function (title, payload) {
+            return {
+                'type': 'postback',
+                'title': title,
+                'payload': payload
+            }
+        })
+    })
+
+};
 
 MessengerController.sendAttachment = function (recipientId, attachment) {
 
@@ -52,7 +93,7 @@ MessengerController.sendAttachment = function (recipientId, attachment) {
 
         setTimeout(function () {
 
-            sendToApi({
+            sendToApi('/me/messages', {
                 'message': {
                     'attachment': attachment
                 },
@@ -73,7 +114,7 @@ MessengerController.sendText = function (recipientId, text) {
 
         setTimeout(function () {
 
-            sendToApi({
+            sendToApi('/me/messages', {
                 'message' : {
                     'text': text
                 },
@@ -94,7 +135,7 @@ MessengerController.sendQuickReplyText = function (recipientId, text, quickRepli
 
         setTimeout(function () {
 
-            sendToApi({
+            sendToApi('/me/messages', {
                 'message' : {
                     'text': text,
                     'quick_replies': quickReplies

@@ -76,7 +76,19 @@ app.post('/messengerwebhook/', function (req, res) {
     
 });
 
-
 app.listen(app.get('port'), function() {
-  console.log('QUEENCITYGRUB: Node app is running on port', app.get('port'));
+
+    console.log('QUEENCITYGRUB: Node app is running on port', app.get('port'));
+
+    // Set the greeting
+    MessengerController.setGreeting('The best food finder in Queen City!');
+    
+    // Set the postback action called when Get Started is pressed
+    MessengerController.setGetStartedPostback('MAIN_MENU');
+
+    // Set the options that are available in the persistent menu
+    MessengerController.setPersistentMenuPostbacks({
+        'MAIN_MENU': 'Main Menu'
+    });
+
 });
