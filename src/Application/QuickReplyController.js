@@ -57,7 +57,7 @@ var buildCaroselReply = function (sender, token, res){
         elements.push({
             "title" : restaurant.name,
             "subtitle" : "Rating: "+ restaurant.rating,
-            "image_url" : "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",").join(",")+"&zoom=15&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
+            "image_url" : "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",")+"&zoom=15&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
             "buttons" : buttons
         });
         
