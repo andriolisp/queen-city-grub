@@ -5,6 +5,8 @@ var MuxController = require("./MuxController");
 
 var MessengerController = {};
 
+MuxController.setMessengerController(MessengerController);
+
 var sendToApi = function (replyBody) {
 
     return new Promise(function (resolve, reject) {

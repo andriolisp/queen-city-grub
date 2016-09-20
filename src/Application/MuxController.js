@@ -1,5 +1,4 @@
 var MuxService = require('../MuxService');
-var MessengerController = require("./MessengerController");
 
 var MuxController = function(){};
 
@@ -62,7 +61,7 @@ var replyMessageText = function (res) {
 
                 // Send a carosel with the suggested restaurants
                 MessengerController.sendAttachment(recipientId, {  
-                    'type':'template',
+                    'type': 'template',
                     'payload': {  
                         'template_type': 'generic',
                         'elements': elements
@@ -87,7 +86,41 @@ var replyMessageText = function (res) {
 
 };
 
+var MessengerController = {};
+
+MuxController.setMessengerController = function (messengerController) {
+    MessengerController = messengerController;
+}
+
+MuxController.handleMessageText = function (senderId, messageText, shortCircuitMonteCarlo) {
+
+    console.log(MessengerController);
+
+    if (shortCircuitMonteCarlo) {
+
+        MuxService.handleRequest({
+            "defaultLocation" : ['35.2270869', '-80.8431267'],
+            "response" : messageText,
+            "userId" : senderId,
+            "monteCarlo" : true
+        }).then(replyMessageText).catch(console.log);
+        
+    } else {
+
+        MuxService.handleRequest({
+            "defaultLocation" : ['35.2270869', '-80.8431267'],
+            "message" : messageText,
+            "userId" : senderId,
+            "monteCarlo" : false
+        }).then(replyMessageText).catch(console.log);
+
+    }
+
+};
+
 MuxController.handleMainMenu = function (senderId) {
+
+    //var MessengerController = require("./MessengerController");
 
     // Send the main menu
     MessengerController.sendAttachment(senderId, {
@@ -162,31 +195,5 @@ MuxController.handleMainMenu = function (senderId) {
     }).catch(console.log);
 
 }
-
-MuxController.handleMessageText = function (senderId, messageText, shortCircuitMonteCarlo) {
-
-    if (shortCircuitMonteCarlo) {
-
-        MuxService.handleRequest({
-            "defaultLocation" : ['35.2270869', '-80.8431267'],
-            "response" : messageText,
-            "userId" : senderId,
-            "monteCarlo" : true
-        }).then(replyMessageText).catch(console.log);
-        
-    } else {
-
-        console.log("Parsing");
-
-        MuxService.handleRequest({
-            "defaultLocation" : ['35.2270869', '-80.8431267'],
-            "message" : messageText,
-            "userId" : senderId,
-            "monteCarlo" : false
-        }).then(replyMessageText).catch(console.log);
-
-    }
-
-};
 
 module.exports = MuxController;
