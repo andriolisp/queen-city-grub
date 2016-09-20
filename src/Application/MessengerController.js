@@ -189,7 +189,7 @@ MessengerController.receivePostback = function (event) {
     case "HELP_MENU":
       MessengerController.sendText(recipientId, "I'm gonna make a few questions to be able to get you good suggestions.").then(function () {
         MuxController.handleMessageText(senderId, null, true);
-      });
+      }).catch(console.log);
       break;
 
     default:
