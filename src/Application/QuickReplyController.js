@@ -64,6 +64,8 @@ var buildCaroselReply = function (sender, token, res){
     });
     
     if (elements.length > 0) {
+      
+        ReplyController.sendMessage(sender, token, "Gotcha! Found a few suggestions for you!")
         
         var caroselData = {
              "attachment":{  
