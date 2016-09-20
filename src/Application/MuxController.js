@@ -1,6 +1,7 @@
+var cache = require('memory-cache');
 var MuxService = require('../MuxService');
 
-var MuxController = function(){};
+var MuxController = {};
 
 var quickReplies = [{
     "content_type":"text",
@@ -92,14 +93,25 @@ MuxController.setMessengerController = function (messengerController) {
     MessengerController = messengerController;
 }
 
+MuxController.handleLocation = function (senderId, location) {
+
+    MessengerController.sendText(senderId, "Thank! I will make recommendations around this location!").then(function () {
+
+        // Store the user's location
+        cache.put('location-'+senderId, location);
+        
+    });
+
+};
+
 MuxController.handleMessageText = function (senderId, messageText, shortCircuitMonteCarlo) {
 
-    console.log(MessengerController);
+    var defaultLocation = cache.get('location-'+senderId) || ['35.2270869', '-80.8431267'];
 
     if (shortCircuitMonteCarlo) {
 
         MuxService.handleRequest({
-            "defaultLocation" : ['35.2270869', '-80.8431267'],
+            "defaultLocation" : defaultLocation,
             "response" : messageText,
             "userId" : senderId,
             "monteCarlo" : true
@@ -108,7 +120,7 @@ MuxController.handleMessageText = function (senderId, messageText, shortCircuitM
     } else {
 
         MuxService.handleRequest({
-            "defaultLocation" : ['35.2270869', '-80.8431267'],
+            "defaultLocation" : defaultLocation,
             "message" : messageText,
             "userId" : senderId,
             "monteCarlo" : false

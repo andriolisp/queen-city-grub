@@ -158,17 +158,34 @@ MessengerController.receiveMessage = function (event) {
   var timeOfMessage = event.timestamp;
   var message = event.message;
 
-  var isQuickReply = _.has(message, 'quick_reply.payload');
-  var messageText = isQuickReply ? _.get(message, 'quick_reply.payload') : message.text;
-  var messageAttachments = message.attachments;
+  var isAttachments = _.has(message, 'attachments');
 
-  switch (messageText) {
-    case 'image': break;
-    case 'button': break;
-    case 'generic': break;
-    case 'receipt': break;
-    default:
-      MuxController.handleMessageText(senderId, messageText, isQuickReply);
+  if (isAttachments) {
+
+    var messageAttachments = _.get(message, 'attachments');
+
+    _.each(messageAttachments, function (messageAttachment) {
+
+      switch (_.get(messageAttachment, 'type')) {
+        case 'location':
+          var lat = _.get(messageAttachment, 'payload.coordinates.lat');
+          var lng = _.get(messageAttachment, 'payload.coordinates.long');
+          MuxController.handleLocation(senderId, [lat,lng]);
+          break;
+
+        default:
+
+      }
+
+    });
+
+  } else {
+    
+    var isQuickReply = _.has(message, 'quick_reply.payload');
+    var messageText = isQuickReply ? _.get(message, 'quick_reply.payload') : _.get(message, 'text');
+
+    MuxController.handleMessageText(senderId, messageText, isQuickReply);
+
   }
 
 }
