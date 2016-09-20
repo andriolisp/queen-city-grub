@@ -181,15 +181,6 @@ MuxController.handleMainMenu = function (senderId) {
                     "title": "Find Chinese Food",
                     "payload": "Find Chinese Food"
                 }]
-            },{
-                "title": "Indian",
-                "subtitle": "Samosas Sound Sweet",
-                "image_url": "https://queen-city-grub.herokuapp.com/indian.jpg",
-                "buttons": [{
-                    "type": "postback",
-                    "title": "Find Indian Food",
-                    "payload": "Find Indian Food"
-                }]
             }]
         }
     }).catch(console.log);
