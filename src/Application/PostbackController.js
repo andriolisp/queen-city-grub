@@ -41,28 +41,28 @@ var buildCaroselReply = function (sender, token, res){
     console.log(JSON.stringify(res));
     console.log("");
 
-    var centerPoint = res.location || res.defaultLocation;
-
     res.restaurants.forEach(function (restaurant, i) {
        
-        var buttons = [{
-            "type" : "web_url",
-            "url" : restaurant.googleUrl,
-            "title" : "Google Maps"
-        }];
+        var buttons = [];
         
         if (restaurant.website != null) {
             buttons.push({
                 "type" : "web_url",
                 "url" : restaurant.website,
-                "title" : "Website"
+                "title" : "Go to Website"
             })
         }
+
+        buttons.push({
+            "type" : "web_url",
+            "url" : restaurant.googleUrl,
+            "title" : "Go to Google Maps"
+        });
         
         elements.push({
             "title" : restaurant.name,
             "subtitle" : "Rating: "+ restaurant.rating,
-            "image_url" : "https://maps.googleapis.com/maps/api/staticmap?center="+centerPoint.join(",")+"&zoom=13&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
+            "image_url" : "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",").join(",")+"&zoom=15&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
             "buttons" : buttons
         });
         
