@@ -140,7 +140,7 @@ MessengerController.receivePostback = function (event) {
     switch(payload) {
 
         case "MAIN_MENU":
-            MuxController.handleMainMenuRequest(senderId);
+            MuxController.handleMainMenu(senderId);
             break;
 
         case "HELP_MENU":
