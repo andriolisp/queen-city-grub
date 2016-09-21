@@ -47,12 +47,6 @@ var replyMessageText = function (res) {
                     "title": "Call Now"
                 })
             }
-
-            buttons.push({
-                "type" : "web_url",
-                "url" : restaurant.googleUrl,
-                "title" : "Go to Google Maps"
-            });
             
             elements.push({
                 "title": restaurant.name,
