@@ -40,6 +40,14 @@ var replyMessageText = function (res) {
                 })
             }
 
+            if (restaurant.phoneNumber != null) {
+                buttons.push({
+                    "type": "phone_number",
+                    "payload": restaurant.phoneNumber.replace(/\s/g, ''),
+                    "title": "Call Now"
+                })
+            }
+
             buttons.push({
                 "type" : "web_url",
                 "url" : restaurant.googleUrl,
@@ -47,10 +55,11 @@ var replyMessageText = function (res) {
             });
             
             elements.push({
-                "title" : restaurant.name,
-                "subtitle" : restaurant.rating + " Rating",
-                "image_url" : "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",")+"&zoom=16&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
-                "buttons" : buttons
+                "title": restaurant.name,
+                "subtitle": restaurant.rating + " Rating",
+                "item_url": estaurant.googleUrl,
+                "image_url": "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",")+"&zoom=16&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
+                "buttons": buttons
             });
             
         });
@@ -95,7 +104,7 @@ MuxController.setMessengerController = function (messengerController) {
 
 MuxController.handleLocation = function (senderId, location) {
 
-    MessengerController.sendText(senderId, "Thank! I will make recommendations around this location!").then(function () {
+    MessengerController.sendText(senderId, "Thanks! I will make recommendations around this location!").then(function () {
 
         // Store the user's location
         cache.put('location-'+senderId, location);
@@ -131,8 +140,6 @@ MuxController.handleMessageText = function (senderId, messageText, shortCircuitM
 };
 
 MuxController.handleMainMenu = function (senderId) {
-
-    //var MessengerController = require("./MessengerController");
 
     // Send the main menu
     MessengerController.sendAttachment(senderId, {
