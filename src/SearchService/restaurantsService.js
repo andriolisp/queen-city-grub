@@ -42,8 +42,8 @@ function getDetails (api, placeId) {
         resolve({
           'name': _.get(res, 'result.name'),
           'rating': _.get(res, 'result.rating'),
-          'website': _.get(res, 'result.website', null),
-          'googleUrl': _.get(res, 'result.url', null),
+          'websiteLink': _.get(res, 'result.website', null),
+          'bubbleLink': _.get(res, 'result.url', null),
           'phoneNumber': _.get(res, 'result.international_phone_number', null),
           'location': [location.lat, location.lng]
         })

@@ -32,14 +32,6 @@ var replyMessageText = function (res) {
         
             var buttons = [];
             
-            if (restaurant.website != null) {
-                buttons.push({
-                    "type" : "web_url",
-                    "url" : restaurant.website,
-                    "title" : "Go to Website"
-                })
-            }
-
             if (restaurant.phoneNumber != null) {
                 buttons.push({
                     "type": "phone_number",
@@ -47,11 +39,19 @@ var replyMessageText = function (res) {
                     "title": "Call Now"
                 })
             }
+
+            if (restaurant.websiteLink != null) {
+                buttons.push({
+                    "type" : "web_url",
+                    "url" : restaurant.websiteLink,
+                    "title" : "Go to Website"
+                })
+            }
             
             elements.push({
                 "title": restaurant.name,
                 "subtitle": restaurant.rating + " Rating",
-                "item_url": restaurant.googleUrl,
+                "item_url": restaurant.bubbleLink,
                 "image_url": "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",")+"&zoom=16&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
                 "buttons": buttons
             });
