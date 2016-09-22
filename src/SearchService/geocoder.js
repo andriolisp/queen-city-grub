@@ -95,7 +95,7 @@ GeoCoder.prototype.find = function (queryData, cb) {
   request
   .get(apiUrl)
   .query(_.extend(queryData, this.queryData))
-  .end(function (res) {
+  .end(function (err, res) {
     switch (res.body.status) {
       case 'OK':
       case 'ZERO_RESULTS':
