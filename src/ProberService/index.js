@@ -10,10 +10,10 @@ var replaceAll = function (str, find, replace) {
 
 var ProberService = {
   getQuestion: function (oldSuggestion, suggestion, answer) {
-    var yesPrefix = ['Awesome! ', 'Sweet! ', 'Cool! ', 'Great! I love it too! ']
-    var noPrefix = ['Too bad! ', 'Good! %oldSuggestion% is gross. ', 'Really? Oh well... ', 'Well, that happens... ']
-    var maybePrefix = ['Hmm... ', 'Well... ', 'Life goes on... ', 'Being difficult, hah? ']
-    var phrases = ['Do you like %suggestion%?', 'Would you like to have %suggestion%?', 'Does %suggestion% sounds good?', 'Are you a %suggestion% person?', 'Would you like %suggestion% or %suggestion%?']
+    var yesPrefix = ['Animal! ', 'Da hora! ', 'Ai sim! ', 'Nossa... eu também! ']
+    var noPrefix = ['Putz... sério? ', 'Nossa, que bom! %oldSuggestion% é nojento. ', 'Sério? então tá... ', 'É... acontece... ']
+    var maybePrefix = ['Hmm... ', 'Bom... ', 'Vamos lá! a vida continua... ', 'Ta se fazendo de dificil, né? ']
+    var phrases = ['Você curte %suggestion%?', 'Você comeria %suggestion%?', '%suggestion% parece bom?', 'O que você acha de %suggestion%?', 'Deixa eu pensar... você comeria %suggestion%, ou como eu tenho muitas opções você prefere %suggestion%?']
     var message = ''
     if (oldSuggestion && oldSuggestion.length > 0) {
       var response = isNaN(answer) ? 0 : parseInt(answer)
