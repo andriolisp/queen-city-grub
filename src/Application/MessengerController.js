@@ -19,7 +19,7 @@ var sendToApi = function (endpoint, replyBody) {
     request({
       'url': 'https://graph.facebook.com/v2.7' + endpoint,
       'qs': {
-        'access_token': 'EAAW6uMkweWQBAO1PQMLik68BwjZCwvY52tzSBsUlVXOlgtPmKEbLVqq2wbYiSplC3k9lniyS7U3WKVhTcI4w5QfZBKy3USkZCeoATwZAZBMQ6xLCBHo9t8JNDI6tTFDaxIhLmWeDFP1BZBTnPaHpMcQ0Eg5lLrlLoQCRvKB3fZBagZDZD'
+        'access_token': 'EAAW6uMkweWQBAOoSguGmnfZCHZBnZCpAlqdysZBEJR8VfXGQOljM9ZCPrZABV4xz684fNKAJpmH9fnlEJTj328AiT0SysRfgZAEXEDlZBQeBh9ypd572qM1hSNLJ8ZCS6TdKjZA7SgbmbCiZBGI2EUsU3w6iMuXOdMKEfAipTTCRHPVBwZDZD'
       },
       'method': 'POST',
       'json': replyBody
