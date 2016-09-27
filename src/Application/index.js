@@ -78,7 +78,7 @@ app.post('/messengerwebhook/', function (req, res) {
 
 app.listen(app.get('port'), function() {
 
-    console.log('QUEENCITYGRUB: Node app is running on port', app.get('port'));
+    console.log('SampaGRUB: Node app is running on port', app.get('port'));
 
     // Set the greeting
     MessengerController.setGreeting('O melhor buscador de restaurantes de SP!');
@@ -88,7 +88,7 @@ app.listen(app.get('port'), function() {
 
     // Set the options that are available in the persistent menu
     MessengerController.setPersistentMenuPostbacks({
-        'MAIN_MENU': 'Main Menu'
+        'MAIN_MENU': 'Menu principal'
     });
 
 });
