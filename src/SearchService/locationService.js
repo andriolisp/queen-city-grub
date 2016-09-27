@@ -6,10 +6,10 @@ var LocationService = {}
 LocationService.find = function (request) {
   return new Promise(function (resolve, reject) {
     // Create a new instance of the Google GeoCoder API
-    var api = new GoogleGeoCoderAPI('AIzaSyCBrJsgcagD8FeGh1Pe-NLW56fdItkVAA4')
+    var api = new GoogleGeoCoderAPI('AIzaSyCKynz61ZWAZwl5eyclLQaIjtcOdg1aAk0')
 
     // An array of components to match on
-    var components = ['country:US', 'administrative_area:NC', 'locality:Charlotte']
+    var components = ['country:BR', 'administrative_area:SP', 'locality:Charlotte']
 
     // An address to match on
     var address = null

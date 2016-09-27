@@ -19,7 +19,7 @@ var sendToApi = function (endpoint, replyBody) {
     request({
       'url': 'https://graph.facebook.com/v2.7' + endpoint,
       'qs': {
-        'access_token': 'EAAXtudRZBgpEBABXXZBxjl71DverAPhM3nWbre6VLUop2585TWjMxtNk3oJv7eVSEPivB9I39Jtp7xHZAdccLZCQv9kLfV4ZAuL2ZBzGMlUxmelPKKnTCZCFZCi87SiFciEMa5M4k1GzEyg6V7jQPJhPasEMyVLnN82sOU02axCaSQZDZD'
+        'access_token': 'EAAW6uMkweWQBAO1PQMLik68BwjZCwvY52tzSBsUlVXOlgtPmKEbLVqq2wbYiSplC3k9lniyS7U3WKVhTcI4w5QfZBKy3USkZCeoATwZAZBMQ6xLCBHo9t8JNDI6tTFDaxIhLmWeDFP1BZBTnPaHpMcQ0Eg5lLrlLoQCRvKB3fZBagZDZD'
       },
       'method': 'POST',
       'json': replyBody
@@ -204,7 +204,7 @@ MessengerController.receivePostback = function (event) {
       break;
 
     case "HELP_MENU":
-      MessengerController.sendText(senderId, "I'm gonna make a few questions to be able to get you good suggestions.").then(function () {
+      MessengerController.sendText(senderId, "Vamos lá! Eu vou te fazer algumas perguntas antes de te sugerir algo, ok?").then(function () {
         MuxController.handleMessageText(senderId, null, true);
       }).catch(console.log);
       break;

@@ -55,7 +55,7 @@ function getDetails (api, placeId) {
 RestaurantsService.find = function (request) {
   return new Promise(function (resolve) {
     // Create a new instance of the Google Places API
-    var api = new GooglePlacesAPI('AIzaSyCuEeb3-5_0kpHFP2xi87vsQdwFjCH86vA')
+    var api = new GooglePlacesAPI('AIzaSyCKynz61ZWAZwl5eyclLQaIjtcOdg1aAk0')
 
     // Get the food type
     var foodTypeEntity = _.get(request, 'classifier.foodType', _.get(request, 'entities.foodType.0'))

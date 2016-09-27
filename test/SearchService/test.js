@@ -2,14 +2,15 @@ var SearchService = require('../../src/SearchService')
 
 var request = {
   'message': '...',
-  'defaultLocation': ['35.2270869', '-80.8431267'],
+  'defaultLocation': ['-23.598088', '-46.683349'],
+  'location': ['-23.598088', '-46.683349'],
   'entities': {
-    'foodType': ['pizza']
+    'foodType': ['japanese']
   }
 }
 
 var searchPromise = SearchService.find(request)
 
 searchPromise.then(function (restaurants) {
-  console.log('Search for South End Pizza', restaurants)
+  console.log('Search for japanese', restaurants)
 })

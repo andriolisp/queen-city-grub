@@ -16,7 +16,7 @@ var params = {
   userId: 0,
   monteCarlo: true,
   message: "I don't know what I want to eat",
-  defaultLocation: [35.007433, -80.851430]
+  defaultLocation: [-23.598088, -46.683349]
 }
 
 params.userId = randomIntInc(1, 1000)

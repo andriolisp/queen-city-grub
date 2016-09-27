@@ -25,7 +25,7 @@ app.get('/',function(req,res){
 });
 
 app.get('/messengerwebhook/', function(req, res) {
-    if (req.query['hub.verify_token'] === 'messenger_webhook_queencitygrub') {
+    if (req.query['hub.verify_token'] === 'messenger_webhook_sampagrub') {
         res.send(req.query['hub.challenge']);
     } else {
         res.send('Error, wrong validation token');
@@ -81,7 +81,7 @@ app.listen(app.get('port'), function() {
     console.log('QUEENCITYGRUB: Node app is running on port', app.get('port'));
 
     // Set the greeting
-    MessengerController.setGreeting('The best food finder in Queen City!');
+    MessengerController.setGreeting('O melhor buscador de restaurantes de SP!');
     
     // Set the postback action called when Get Started is pressed
     MessengerController.setGetStartedPostback('MAIN_MENU');

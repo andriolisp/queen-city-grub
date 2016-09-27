@@ -5,15 +5,15 @@ var MuxController = {};
 
 var quickReplies = [{
     "content_type":"text",
-    "title":"Yes",
+    "title":"Sim",
     "payload":"2"
 },{
     "content_type":"text",
-    "title":"No",
+    "title":"Não",
     "payload":"0"
 },{
     "content_type":"text",
-    "title":"Maybe",
+    "title":"Talvez",
     "payload":"1"
 }];
 
@@ -36,7 +36,7 @@ var replyMessageText = function (res) {
                 buttons.push({
                     "type": "phone_number",
                     "payload": restaurant.phoneNumber.replace(/\s/g, ''),
-                    "title": "Call Now"
+                    "title": "Ligar"
                 })
             }
 
@@ -44,13 +44,13 @@ var replyMessageText = function (res) {
                 buttons.push({
                     "type" : "web_url",
                     "url" : restaurant.websiteLink,
-                    "title" : "Go to Website"
+                    "title" : "Ir para o site"
                 })
             }
             
             elements.push({
                 "title": restaurant.name,
-                "subtitle": restaurant.rating + " Rating",
+                "subtitle": restaurant.rating + " pontos",
                 "item_url": restaurant.bubbleLink,
                 "image_url": "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",")+"&zoom=16&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
                 "buttons": buttons
@@ -61,7 +61,7 @@ var replyMessageText = function (res) {
         if (elements.length > 0) {
 
            // Let the user know we found some suggestions 
-           MessengerController.sendText(recipientId, "I have a few suggestions for you! Just a second...").then(function () {
+           MessengerController.sendText(recipientId, "Calma ai, acho que eu tenho algumas idéias para você...").then(function () {
 
                 // Send a carosel with the suggested restaurants
                 MessengerController.sendAttachment(recipientId, {  
@@ -77,7 +77,7 @@ var replyMessageText = function (res) {
         } else {
             
             // There are no suggestions to present
-            MessengerController.sendText(recipientId, "I'm sorry! I can't think of any suggestions for you!").catch(console.log);
+            MessengerController.sendText(recipientId, "Putzzz! Não consegui achar nada que eu ache que você vai gostar!").catch(console.log);
             
         }
 
@@ -98,7 +98,7 @@ MuxController.setMessengerController = function (messengerController) {
 
 MuxController.handleLocation = function (senderId, location) {
 
-    MessengerController.sendText(senderId, "Thanks! I will make recommendations around this location!").then(function () {
+    MessengerController.sendText(senderId, "Pronto! Vou procurar algo aqui perto pra você... Espera só um pouco!").then(function () {
 
         // Store the user's location
         cache.put('location-'+senderId, location);
@@ -109,7 +109,7 @@ MuxController.handleLocation = function (senderId, location) {
 
 MuxController.handleMessageText = function (senderId, messageText, shortCircuitMonteCarlo) {
 
-    var defaultLocation = cache.get('location-'+senderId) || ['35.2270869', '-80.8431267'];
+    var defaultLocation = cache.get('location-'+senderId) || ['-23.598088', '-46.683349'];
 
     if (shortCircuitMonteCarlo) {
 
@@ -141,8 +141,8 @@ MuxController.handleMainMenu = function (senderId) {
         "payload": {
             "template_type": "generic",
             "elements": [{
-                "title": "Welcome to Queen City Grub",
-                "subtitle": "I can help you find something to eat!",
+                "title": "Bem vindo ao Sampa Grub",
+                "subtitle": "Eu posso te ajudar a encontrar aonde comer!",
                 "image_url": "https://queen-city-grub.herokuapp.com/welcome.jpg" ,
                 "buttons": [{
                     "type": "web_url",
@@ -150,49 +150,49 @@ MuxController.handleMainMenu = function (senderId) {
                     "url": "https://www.facebook.com/queencitygrub/",
                 }]
             },{
-                "title": "I don’t know",
-                "subtitle": "Help me find something good",
+                "title": "Não sei",
+                "subtitle": "Me ajuda a achar algum lugar legal?",
                 "image_url": "https://queen-city-grub.herokuapp.com/imnotsure.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Help Me",
+                    "title": "Me ajuda",
                     "payload": "HELP_MENU"
                 }]
             },{
-                "title": "Mexican",
-                "subtitle": "Mild or Spicy you will love it",
+                "title": "Mexicano",
+                "subtitle": "Ai ai ai!!! Nada como tacos!",
                 "image_url": "https://queen-city-grub.herokuapp.com/mexican.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Find Mexican Food",
-                    "payload": "Find Mexican Food"
+                    "title": "Quero comer comida mexicana!",
+                    "payload": "Quero comer comida mexicana!"
                 }]
             },{
-                "title": "Italian",
-                "subtitle": "Mamma Mia that's a spicy meatball",
+                "title": "Italiano",
+                "subtitle": "Mamma Mia! Uma Lasanha!",
                 "image_url": "https://queen-city-grub.herokuapp.com/italian.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Find Italian Food",
-                    "payload": "Find Italian Food"
+                    "title": "Quero comida italiana!",
+                    "payload": "Quero comida italiana!"
                 }]
             },{
-                "title": "American",
-                "subtitle": "Get it while its hot",
+                "title": "Japonesa",
+                "subtitle": "Hmmm... Nada como um Temaki agora",
                 "image_url": "https://queen-city-grub.herokuapp.com/american.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Find American Food",
-                    "payload": "Find American Food"
+                    "title": "Quero comida japonesa!",
+                    "payload": "Quero comida japonesa!"
                 }]
             },{
-                "title": "Chinese",
-                "subtitle": "Fortune Cookie Time",
+                "title": "Chinesa",
+                "subtitle": "Nada como yakisoba agora!",
                 "image_url": "https://queen-city-grub.herokuapp.com/chinese.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Find Chinese Food",
-                    "payload": "Find Chinese Food"
+                    "title": "Quero comida chinesa",
+                    "payload": "Quero comida chinesa"
                 }]
             }]
         }
