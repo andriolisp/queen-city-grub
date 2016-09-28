@@ -171,7 +171,7 @@ MessengerController.receiveMessage = function (event) {
           var lat = _.get(messageAttachment, 'payload.coordinates.lat');
           var lng = _.get(messageAttachment, 'payload.coordinates.long');
           console.log('lat: ' + lat + ', long: ' + lng)
-          MuxController.handleLocation(senderId, [lat, lng]);
+          MuxController.handleLocation(senderId, recipientId, [lat, lng]);
           break;
 
         default:
