@@ -208,7 +208,8 @@ MessengerController.receivePostback = function (event) {
       }).catch(console.log);
       break;
     case "LOCATION_TEST":
-      MessengerController.sendText(senderId, "Opa!! vamos te ajudar um lugar legal para comer ai perto, você pode me mandar sua localização?").catch(console.log)
+      MuxController.handleHelpMenu(senderId, recipientId, payload).catch(console.log)
+      break;
     default:
       MuxController.handleMessageText(senderId, payload, false);
       break;

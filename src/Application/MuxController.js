@@ -105,16 +105,12 @@ MuxController.setMessengerController = function (messengerController) {
 MuxController.handleLocation = function (senderId, recipientId, location) {
 
     MessengerController.sendText(senderId, "Legal!! Agora eu consigo achar algo no maximo a 3km de você!!").then(function () {
-
-        // Store the user's location
-        cache.put('location-'+recipientId, location);
-        console.log('Loaded on cache for location-'+recipientId+': ' + cache.get('location-'+senderId))
+        cache.put('location-'+recipientId, location, 600000);
     });
 
 };
 
 MuxController.handleMessageText = function (senderId, messageText, shortCircuitMonteCarlo) {
-    console.log('Location on cache for location-'+senderId+': ' + cache.get('location-'+senderId))
     var defaultLocation = cache.get('location-'+senderId) || ['-23.598088', '-46.683349'];
 
     if (shortCircuitMonteCarlo) {
@@ -138,6 +134,29 @@ MuxController.handleMessageText = function (senderId, messageText, shortCircuitM
     }
 
 };
+
+MuxController.handleHelpMenu = function(senderId, recipientId, payload) {
+  if(senderId && recipientId) {
+    console.log('[MuxController.handleHelpMenu] senderId: ', senderId)
+    console.log('[MuxController.handleHelpMenu] recipientId: ', recipientId)
+    console.log('[MuxController.handleHelpMenu] payload: ', payload)
+    var defaultLocation = ['-23.598088', '-46.683349'];
+    var location = cache.get('location-'+recipientId)
+    if(location !== null && location != undefined) {
+      MessengerController.sendText(senderId, "Vamos lá! Já sei aonde você tá, então eu vou te fazer algumas perguntas antes de te sugerir algo, ok?").then(function () {
+        MuxController.handleMessageText(senderId, null, true);
+      }).catch(console.log);
+    } else {
+      MuxController.handleMessageText({
+            "defaultLocation" : defaultLocation,
+            "message" : "Opa!! vamos te ajudar a achar um lugar legal para comer ai perto, você pode me mandar sua localização?",
+            "userId" : senderId,
+            "monteCarlo" : false,
+            "askLocation": true
+      }).then(replyMessageText).catch(console.log)
+    }
+  }
+}
 
 MuxController.handleMainMenu = function (senderId) {
 
