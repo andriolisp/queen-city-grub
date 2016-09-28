@@ -8,17 +8,20 @@ var MuxService = {}
 // or if we have enough information to search for restaurants
 MuxService.handleRequest = function (request) {
   return new Promise(function (resolve) {
-    if (request['monteCarlo']) {
+    if (request['monteCarlo'] && !request['askLocation']) {
       proberService.getUserSuggestions(request).then(resolve)
     } else {
       classifierService.classify(request).then(function (request) {
-        if (request.classifier.recommend) {
-          request.monteCarlo = true
-          proberService.getUserSuggestions(request).then(resolve)
-        } else {
-          entitiesService.tag(request).then(function (request) {
-            searchService.find(request).then(resolve)
-          })
+        if (request['askLocation']) resolve(request);
+        else {
+          if (request.classifier.recommend) {
+            request.monteCarlo = true
+            proberService.getUserSuggestions(request).then(resolve)
+          } else {
+            entitiesService.tag(request).then(function (request) {
+              searchService.find(request).then(resolve)
+            })
+          }
         }
       })
     }

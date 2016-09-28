@@ -151,7 +151,7 @@ MuxController.handleHelpMenu = function(senderId, recipientId, payload) {
             "defaultLocation" : defaultLocation,
             "message" : "Opa!! vamos te ajudar a achar um lugar legal para comer ai perto, você pode me mandar sua localização?",
             "userId" : senderId,
-            "monteCarlo" : false,
+            "monteCarlo" : true,
             "askLocation": true
       }).then(replyMessageText).catch(console.log)
     }
