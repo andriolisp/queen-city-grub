@@ -108,7 +108,7 @@ MuxController.handleLocation = function (senderId, location) {
 
         // Store the user's location
         cache.put('location-'+senderId, location);
-        
+        console.log('Loaded on cache for location-'+senderId+': ' + cache.get('location-'+senderId))
     });
 
 };
