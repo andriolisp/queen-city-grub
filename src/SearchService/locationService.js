@@ -9,7 +9,7 @@ LocationService.find = function (request) {
     var api = new GoogleGeoCoderAPI('AIzaSyCKynz61ZWAZwl5eyclLQaIjtcOdg1aAk0')
 
     // An array of components to match on
-    var components = ['country:BR', 'administrative_area:SP', 'locality:Charlotte']
+    var components = ['country:BR', 'administrative_area:SP']
 
     // An address to match on
     var address = null

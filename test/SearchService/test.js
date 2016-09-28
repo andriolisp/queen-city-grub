@@ -5,7 +5,7 @@ var request = {
   'defaultLocation': ['-23.598088', '-46.683349'],
   'location': ['-23.598088', '-46.683349'],
   'entities': {
-    'foodType': ['japanese']
+    'foodType': ['restaurente italiano']
   }
 }
 

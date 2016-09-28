@@ -20,8 +20,7 @@ function GeoPlace (res) {
       enumerable: true,
       get: function () {
         switch (this.country.short_name) {
-          case 'CA':
-          case 'US':
+          default:
             return this.locality || this.sublocality
         }
         return undefined
@@ -35,8 +34,7 @@ function GeoPlace (res) {
       enumerable: true,
       get: function () {
         switch (this.country.short_name) {
-          case 'CA':
-          case 'US':
+          default:
             return this.administrative_area_level_1
         }
         return undefined
