@@ -1,26 +1,128 @@
 {
-	"americano": 
-		["hamburguer", "queijo", "maionese", "cheeseburguer", "buffalo wings", "chicken strips", "batata frita", "cheddar", "bacon", "hotdog", "pepperoni", "steaks", "camarão"],
-
-  "pizza":
-    ["mussarela", "pizza", "molho de tomate", "queijo", "oregano", "cebola", "bacon", "cheddar", "catupiry", "calabresa", "pepperoni", "champignon", "presunto", "queijo"],
-  
-  "hamburguer":
-    ["hamburguer", "cheeseburguer", "queijo", "oregano", "cebola", "bacon", "cheddar", "catupiry", "calabresa", "pepperoni", "champignon", "presunto", "alface", "tomate", "ovo", "batata frita"],
-
-  "mexicano": 
-    ["tacos", "nachos", "enchiladas", "burritos", "cheddar", "jalapenos", "bacon", "pico de gallo", "pimenta", "chilli"],
-
-  "italiano": 
-	  ["espaguetti", "massas", "pizza", "ciabatta", "molho de tomate", "tomate","queijo", "mussarela", "molhos", "bruschetta","pão italiano","sopas","mussarela de bufala","lasanha","talharine","minestrone", "oregano", "parmeggiana", "macarrão"],
-  
-	"churrasco":
-		 ["picanha", "bifes", "steaks", "fraldinha", "carne", "churrasco", "cupim", "contra-filé", "filé mignon", "frango", "linguiça", "calabresa"],
-
-  "japonês": 
-    ["temaki","arroz","ovo","macarrão ramen", "macarrão","shoyu","vegetais","sushi","salmão","peixe","caranguejo","camarão", "mochi","teppanyaki","yakisoba", "harumaki", "sashimi"],
-
-    "chinesa": 
-      ["yakisoba", "porco", "frango", "peixe", "batata", "arroz", "yakimeshi", "camarão", "comida chinesa"]
-
+  "americano": [
+    "hamburguer",
+    "queijo",
+    "maionese",
+    "cheeseburguer",
+    "buffalo wings",
+    "chicken strips",
+    "batata frita",
+    "cheddar",
+    "bacon",
+    "hotdog",
+    "pepperoni",
+    "steaks",
+    "camarão"
+  ],
+  "pizza": [
+    "mussarela",
+    "pizza",
+    "molho de tomate",
+    "queijo",
+    "oregano",
+    "cebola",
+    "bacon",
+    "cheddar",
+    "catupiry",
+    "calabresa",
+    "pepperoni",
+    "champignon",
+    "presunto",
+    "queijo"
+  ],
+  "hamburguer": [
+    "hamburguer",
+    "cheeseburguer",
+    "queijo",
+    "oregano",
+    "cebola",
+    "bacon",
+    "cheddar",
+    "catupiry",
+    "calabresa",
+    "pepperoni",
+    "champignon",
+    "presunto",
+    "alface",
+    "tomate",
+    "ovo",
+    "batata frita"
+  ],
+  "mexicano": [
+    "tacos",
+    "nachos",
+    "enchiladas",
+    "burritos",
+    "cheddar",
+    "jalapenos",
+    "bacon",
+    "pico de gallo",
+    "pimenta",
+    "chilli"
+  ],
+  "italiano": [
+    "espaguetti",
+    "massas",
+    "pizza",
+    "ciabatta",
+    "molho de tomate",
+    "tomate",
+    "queijo",
+    "mussarela",
+    "molhos",
+    "bruschetta",
+    "pão italiano",
+    "sopas",
+    "mussarela de bufala",
+    "lasanha",
+    "talharine",
+    "minestrone",
+    "oregano",
+    "parmeggiana",
+    "macarrão"
+  ],
+  "churrasco": [
+    "picanha",
+    "bifes",
+    "steaks",
+    "fraldinha",
+    "carne",
+    "churrasco",
+    "cupim",
+    "contra-filé",
+    "filé mignon",
+    "frango",
+    "linguiça",
+    "calabresa"
+  ],
+  "japonês": [
+    "temaki",
+    "arroz",
+    "ovo",
+    "macarrão ramen",
+    "macarrão",
+    "shoyu",
+    "vegetais",
+    "sushi",
+    "salmão",
+    "peixe",
+    "caranguejo",
+    "camarão",
+    "mochi",
+    "teppanyaki",
+    "yakisoba",
+    "harumaki",
+    "sashimi"
+  ],
+  "chinesa": [
+    "yakisoba",
+    "porco",
+    "frango",
+    "peixe",
+    "batata",
+    "arroz",
+    "yakimeshi",
+    "camarão",
+    "comida chinesa"
+  ]
 }

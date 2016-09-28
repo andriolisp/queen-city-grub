@@ -170,7 +170,7 @@ MessengerController.receiveMessage = function (event) {
         case 'location':
           var lat = _.get(messageAttachment, 'payload.coordinates.lat');
           var lng = _.get(messageAttachment, 'payload.coordinates.long');
-          MuxController.handleLocation(senderId, [lat,lng]);
+          MuxController.handleLocation(senderId, [lat, lng]);
           break;
 
         default:
@@ -180,7 +180,7 @@ MessengerController.receiveMessage = function (event) {
     });
 
   } else {
-    
+
     var isQuickReply = _.has(message, 'quick_reply.payload');
     var messageText = isQuickReply ? _.get(message, 'quick_reply.payload') : _.get(message, 'text');
 
@@ -197,6 +197,7 @@ MessengerController.receivePostback = function (event) {
   var timeOfPostback = event.timestamp;
   var payload = event.postback.payload;
 
+  console.log('Event Details: ', event)
   switch (payload) {
 
     case "MAIN_MENU":
