@@ -170,6 +170,7 @@ MessengerController.receiveMessage = function (event) {
         case 'location':
           var lat = _.get(messageAttachment, 'payload.coordinates.lat');
           var lng = _.get(messageAttachment, 'payload.coordinates.long');
+          console.log('lat: ' + lat + ', long: ' + long)
           MuxController.handleLocation(senderId, [lat, lng]);
           break;
 
@@ -197,19 +198,17 @@ MessengerController.receivePostback = function (event) {
   var timeOfPostback = event.timestamp;
   var payload = event.postback.payload;
 
-  console.log('Event Details: ', event)
   switch (payload) {
-
     case "MAIN_MENU":
       MuxController.handleMainMenu(senderId);
       break;
-
     case "HELP_MENU":
       MessengerController.sendText(senderId, "Vamos lá! Eu vou te fazer algumas perguntas antes de te sugerir algo, ok?").then(function () {
         MuxController.handleMessageText(senderId, null, true);
       }).catch(console.log);
       break;
-
+    case "LOCATION_TEST":
+      MessengerController.sendText(senderId, "Opa!! vamos te ajudar um lugar legal para comer ai perto, você pode me mandar sua localização?").catch(console.log)
     default:
       MuxController.handleMessageText(senderId, payload, false);
       break;

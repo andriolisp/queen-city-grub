@@ -104,7 +104,7 @@ MuxController.setMessengerController = function (messengerController) {
 
 MuxController.handleLocation = function (senderId, location) {
 
-    MessengerController.sendText(senderId, "Pronto! Vou procurar algo aqui perto pra você... Espera só um pouco!").then(function () {
+    MessengerController.sendText(senderId, "Legal!! Agora eu consigo achar algo no maximo a 3km de você!!").then(function () {
 
         // Store the user's location
         cache.put('location-'+senderId, location);
@@ -114,7 +114,7 @@ MuxController.handleLocation = function (senderId, location) {
 };
 
 MuxController.handleMessageText = function (senderId, messageText, shortCircuitMonteCarlo) {
-
+    console.log('Location on cache for location-'+senderId+': ' + cache.get('location-'+senderId))
     var defaultLocation = cache.get('location-'+senderId) || ['-23.598088', '-46.683349'];
 
     if (shortCircuitMonteCarlo) {
@@ -198,7 +198,7 @@ MuxController.handleMainMenu = function (senderId) {
                 "buttons": [{
                     "type": "postback",
                     "title": "Comida chinesa!",
-                    "payload": "chinesa"
+                    "payload": "LOCATION_TEST"
                 }]
             }]
         }
