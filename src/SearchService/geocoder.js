@@ -2,9 +2,9 @@ var _ = require('underscore')
 var request = require('superagent')
 var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json'
 
-function GeoPlace (res) {
+function GeoPlace(res) {
   Object
-  .defineProperty(
+    .defineProperty(
     this,
     'googleResponse', {
       value: res,
@@ -14,11 +14,12 @@ function GeoPlace (res) {
     })
 
   Object
-  .defineProperty(
+    .defineProperty(
     this,
     'city', {
       enumerable: true,
       get: function () {
+        console.log('city', this)
         switch (this.country.short_name) {
           default:
             return this.locality || this.sublocality
@@ -28,11 +29,12 @@ function GeoPlace (res) {
     })
 
   Object
-  .defineProperty(
+    .defineProperty(
     this,
     'province_state', {
       enumerable: true,
       get: function () {
+        console.log('province_state', this)
         switch (this.country.short_name) {
           default:
             return this.administrative_area_level_1
@@ -79,7 +81,7 @@ GeoPlace.parseAddressResults = function (results) {
   return places
 }
 
-function GeoCoder (apiKey) {
+function GeoCoder(apiKey) {
   this.queryData = {
     key: apiKey,
     sensor: false
@@ -91,22 +93,22 @@ function GeoCoder (apiKey) {
 GeoCoder.prototype.find = function (queryData, cb) {
   var coder = this
   request
-  .get(apiUrl)
-  .query(_.extend(queryData, this.queryData))
-  .end(function (err, res) {
-    switch (res.body.status) {
-      case 'OK':
-      case 'ZERO_RESULTS':
-        coder.lastResults = res.body
-        cb && cb(null,
-          GeoPlace.parseAddressResults(res.body.results),
-          res.body
-        )
-        break
-      default:
-        cb && cb(res.body)
-    }
-  })
+    .get(apiUrl)
+    .query(_.extend(queryData, this.queryData))
+    .end(function (err, res) {
+      switch (res.body.status) {
+        case 'OK':
+        case 'ZERO_RESULTS':
+          coder.lastResults = res.body
+          cb && cb(null,
+            GeoPlace.parseAddressResults(res.body.results),
+            res.body
+          )
+          break
+        default:
+          cb && cb(res.body)
+      }
+    })
 }
 
 module.exports = function (key) {

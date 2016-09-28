@@ -22,7 +22,7 @@ LocationService.find = function (request) {
 
     if (addressEntity != null) {
       // Prefer an address if it is given
-      address = addressEntity
+      console.log('addressEntity != null', address)
     } else if (neighborhoodEntity) {
       // Use a neighborhood component if no address is available
       components.push('neighborhood:' + neighborhoodEntity)

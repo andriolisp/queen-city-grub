@@ -48,13 +48,19 @@ var replyMessageText = function (res) {
                 })
             }
             
-            elements.push({
+            var elementData = {
                 "title": restaurant.name,
-                "subtitle": restaurant.rating + " pontos",
+                "subtitle": "",
                 "item_url": restaurant.bubbleLink,
                 "image_url": "https://maps.googleapis.com/maps/api/staticmap?center="+restaurant.location.join(",")+"&zoom=16&size=500x270&maptype=roadmap&markers=color:"+colors[i]+"|label:"+labels[i]+"|"+restaurant.location.join(","),
                 "buttons": buttons
-            });
+            }
+
+            if(restaurant.rating) {
+              elementData.subtitle = restaurant.rating + " pontos"
+            }
+
+            elements.push(elementData);
             
         });
 
@@ -159,13 +165,13 @@ MuxController.handleMainMenu = function (senderId) {
                     "payload": "HELP_MENU"
                 }]
             },{
-                "title": "Americana",
+                "title": "Mexicana",
                 "subtitle": "Ai ai ai!!! Nada como tacos!",
                 "image_url": "https://sampa-grub.herokuapp.com/mexicana.jpg",
                 "buttons": [{
                     "type": "postback",
                     "title": "Comer mexicana!",
-                    "payload": "Comer mexicana!"
+                    "payload": "mexicana"
                 }]
             },{
                 "title": "Italiano",
@@ -174,16 +180,16 @@ MuxController.handleMainMenu = function (senderId) {
                 "buttons": [{
                     "type": "postback",
                     "title": "Comida italiana!",
-                    "payload": "Comida italiana!"
+                    "payload": "italiana"
                 }]
             },{
-                "title": "Japonesa",
+                "title": "Americana",
                 "subtitle": "Hmmm... Buffalo wings!",
                 "image_url": "https://sampa-grub.herokuapp.com/americana.jpg",
                 "buttons": [{
                     "type": "postback",
                     "title": "Comida americana!",
-                    "payload": "Comida americana!"
+                    "payload": "americana"
                 }]
             },{
                 "title": "Chinesa",
@@ -192,7 +198,7 @@ MuxController.handleMainMenu = function (senderId) {
                 "buttons": [{
                     "type": "postback",
                     "title": "Comida chinesa!",
-                    "payload": "Comida chinesa!"
+                    "payload": "chinesa"
                 }]
             }]
         }

@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 app.get('/',function(req,res){
-  res.send('This is QUEENCITYGRUB Server');
+  res.send('This is SampaGRUB Server');
 });
 
 app.get('/messengerwebhook/', function(req, res) {
