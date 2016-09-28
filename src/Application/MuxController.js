@@ -143,16 +143,16 @@ MuxController.handleMainMenu = function (senderId) {
             "elements": [{
                 "title": "Bem vindo ao Sampa Grub",
                 "subtitle": "Eu posso te ajudar a encontrar aonde comer!",
-                "image_url": "https://sampa-grub.herokuapp.com/welcome.jpg" ,
+                "image_url": "https://sampa-grub.herokuapp.com/bemvindo.jpg" ,
                 "buttons": [{
                     "type": "web_url",
                     "title": "Pagina no Facebook",
-                    "url": "https://www.facebook.com/queencitygrub/",
+                    "url": "https://www.facebook.com/sampagrub/",
                 }]
             },{
                 "title": "Não sei",
                 "subtitle": "Me ajuda a achar algum lugar legal?",
-                "image_url": "https://sampa-grub.herokuapp.com/imnotsure.jpg",
+                "image_url": "https://sampa-grub.herokuapp.com/naosei.jpg",
                 "buttons": [{
                     "type": "postback",
                     "title": "Me ajuda",
@@ -161,7 +161,7 @@ MuxController.handleMainMenu = function (senderId) {
             },{
                 "title": "Mexicano",
                 "subtitle": "Ai ai ai!!! Nada como tacos!",
-                "image_url": "https://sampa-grub.herokuapp.com/mexican.jpg",
+                "image_url": "https://sampa-grub.herokuapp.com/mexicana.jpg",
                 "buttons": [{
                     "type": "postback",
                     "title": "Comer mexicana!",
@@ -170,7 +170,7 @@ MuxController.handleMainMenu = function (senderId) {
             },{
                 "title": "Italiano",
                 "subtitle": "Mamma Mia! Uma Lasanha!",
-                "image_url": "https://sampa-grub.herokuapp.com/italian.jpg",
+                "image_url": "https://sampa-grub.herokuapp.com/italiana.jpg",
                 "buttons": [{
                     "type": "postback",
                     "title": "Comida italiana!",
@@ -178,21 +178,21 @@ MuxController.handleMainMenu = function (senderId) {
                 }]
             },{
                 "title": "Japonesa",
-                "subtitle": "Hmmm... Nada como um Temaki agora",
-                "image_url": "https://sampa-grub.herokuapp.com/american.jpg",
+                "subtitle": "Hmmm... Buffalo wings!",
+                "image_url": "https://sampa-grub.herokuapp.com/americana.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Comida japonesa!",
-                    "payload": "Comida japonesa!"
+                    "title": "Comida americana!",
+                    "payload": "Comida americana!"
                 }]
             },{
                 "title": "Chinesa",
                 "subtitle": "Nada como yakisoba agora!",
-                "image_url": "https://sampa-grub.herokuapp.com/chinese.jpg",
+                "image_url": "https://sampa-grub.herokuapp.com/chinesa.jpg",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Comida chinesa",
-                    "payload": "Comida chinesa"
+                    "title": "Comida chinesa!",
+                    "payload": "Comida chinesa!"
                 }]
             }]
         }
