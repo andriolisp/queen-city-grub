@@ -66,7 +66,7 @@ RestaurantsService.find = function (request) {
     // Build the search criteria for Google Places API
     var searchCriteria = {
       'radius': 11265.4, // Look within 7 mile radius of location?
-      'type': 'restaurant', // We only want restaurants
+      'type': 'restaurante', // We only want restaurants
       'keyword': foodTypeEntity,
       'location': request.location || request.defaultLocation,
       'maxprice': maxPrice,
