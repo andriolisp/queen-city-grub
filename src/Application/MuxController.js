@@ -152,14 +152,14 @@ MuxController.handleMainMenu = function (senderId) {
             },{
                 "title": "Não sei",
                 "subtitle": "Me ajuda a achar algum lugar legal?",
-                "image_url": "https://sampa-grub.herokuapp.com/naosei.jpg",
+                "image_url": "https://sampa-grub.herokuapp.com/nao-sei.jpg",
                 "buttons": [{
                     "type": "postback",
                     "title": "Me ajuda",
                     "payload": "HELP_MENU"
                 }]
             },{
-                "title": "Mexicano",
+                "title": "Americana",
                 "subtitle": "Ai ai ai!!! Nada como tacos!",
                 "image_url": "https://sampa-grub.herokuapp.com/mexicana.jpg",
                 "buttons": [{
