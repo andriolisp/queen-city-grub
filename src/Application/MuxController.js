@@ -102,13 +102,13 @@ MuxController.setMessengerController = function (messengerController) {
     MessengerController = messengerController;
 }
 
-MuxController.handleLocation = function (senderId, location) {
+MuxController.handleLocation = function (senderId, recipientId, location) {
 
     MessengerController.sendText(senderId, "Legal!! Agora eu consigo achar algo no maximo a 3km de você!!").then(function () {
 
         // Store the user's location
-        cache.put('location-'+senderId, location);
-        console.log('Loaded on cache for location-'+senderId+': ' + cache.get('location-'+senderId))
+        cache.put('location-'+recipientId, location);
+        console.log('Loaded on cache for location-'+recipientId+': ' + cache.get('location-'+senderId))
     });
 
 };
